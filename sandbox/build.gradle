@@ -1,4 +1,4 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "MyFirstProgram"
+mainClassName = "e:/JFT/java_ht_new/sandbox/src/main/java/ru/stqa/java_ht_new/sandbox/MyFirstProgram"
 
