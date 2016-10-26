@@ -3,11 +3,10 @@ package home.task02.sandbox;
 public class Executable {
   public static void main(String[] args) {
 
-    Point point = new Point(3, 5, 2, 8);
-    double result = point.distance();
-    System.out.println("Расстояние между двумя точками A с координатами x1="
-            + point.x1 + " и x2=" + point.x2 +
-            " и B c координатами y1=" + point.y1 + " и y2=" + point.y2 +
-            " на плоскости равно: " + result);
-  }
+    Point point1 = new Point(0, 0);
+    Point point2 = new Point(3, 4);
+    double result = point1.distance(point2);
+    System.out.println("Растояние между точками point1=[" + point1.x + "," + point1.y + "]" +
+            " и point2=[" + point2.x + "," + point2.y + "] равно: " + result);
+    }
 }

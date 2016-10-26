@@ -1,22 +1,21 @@
 package home.task02.sandbox;
 
 public class Point{
-  double x1;
-  double x2;
-  double y1;
-  double y2;
+  double x;
+  double y;
 
-  public Point(double x1, double x2, double y1, double y2) {
-    this.x1 = x1;
-    this.x2 = x2;
-    this.y1 = y1;
-    this.y2 = y2;
+  public Point(double x, double y) {
+    this.x = x;
+    this.y = y;
   }
 
-  public double distance() {
-    double temp1 = (this.x2 - this.x1)*(this.x2 - this.x1);
-    double temp2 = (this.y2 - this.y1)*(this.y2 - this.y1);
+    public double distance(double x, double y) {
+    double temp1 = (this.x - x)*(this.x - x);
+    double temp2 = (this.y - y)*(this.y - y);
     return Math.sqrt(temp1 + temp2);
   }
 
+  public double distance(Point p) {
+    return distance(p.x, p.y);
+  }
 }

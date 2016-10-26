@@ -6,28 +6,30 @@ import org.testng.annotations.Test;
 
 public class PointDistanceTests {
 
-  @Test // passed test
+  @Test ( priority = 1 ) // passed test with a msg
   public void distanceTestOne() {
-    Point p = new Point(2, 6, 3, 3);
-    double temp = p.distance(); // мини-блок для самопроверки
-    System.out.println("Вычисляем расстояние для самопроверки: " + temp);
-    Assert.assertEquals(p.distance(), 4.0);
+    System.out.println("distanceTestOne");
+    Point p1 = new Point(0, 0);
+    Point p2 = new Point(3, 4);
+    double actualRes = p1.distance(p2);
+    Assert.assertEquals(actualRes, 5.0);
 
   }
-  @Test // failed test
+  @Test ( priority = 2 )// failed test
   public void distanceTestTwo() {
-    Point p = new Point(2, 6, 3, 3);
-    double temp = p.distance(); // мини-блок для самопроверки
-    System.out.println("Вычисляем расстояние для самопроверки: " + temp);
-    Assert.assertEquals(p.distance(), 3.0);
-
+    System.out.println("distanceTestTwo");
+    Point p1 = new Point(0, 0);
+    Point p2 = new Point(3, 4);
+    double actualResult = p1.distance(p2);
+    Assert.assertEquals(actualResult, 3.0);
   }
-  @Test // failed test with a msg
+  @Test ( priority = 3 )// failed test with a msg
   public void distanceTestThree() {
-    Point p = new Point(2, 6, 3, 3);
-    double temp = p.distance(); // мини-блок для самопроверки
-    System.out.println("Вычисляем расстояние для самопроверки: "+ temp);
-    Assert.assertEquals(p.distance(), 5, "ALARM");
+    System.out.println("distanceTestThree");
+    Point p1 = new Point(0, 0);
+    Point p2 = new Point(3, 4);
+    double actualResult = p1.distance(p2);
+    Assert.assertEquals(actualResult, 5, "FAIL");
 
   }
 }
