@@ -25,10 +25,11 @@ public class GroupTestCreation {
   public void setUp() throws Exception {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-   }
+    login();
 
-  @Test
-  public void GroupTestCreation() {
+  }
+
+  private void login() {
     wd.get("http://localhost/addressbook/group.php");
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
@@ -37,8 +38,28 @@ public class GroupTestCreation {
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-    wd.findElement(By.linkText("groups")).click();
-    wd.findElement(By.name("new")).click();
+  }
+
+  @Test
+  public void testGroupCreation() {
+
+
+    gotoGroupsPage();
+    initNewGroupCreation();
+    fillingTheForm();
+    submitNewGroupCreation();
+    goBackToGroupPage();
+  }
+
+  private void goBackToGroupPage() {
+    wd.findElement(By.linkText("group page")).click();
+  }
+
+  private void submitNewGroupCreation() {
+    wd.findElement(By.name("submit")).click();
+  }
+
+  private void fillingTheForm() {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys("hometask1");
@@ -48,8 +69,14 @@ public class GroupTestCreation {
     wd.findElement(By.name("group_footer")).click();
     wd.findElement(By.name("group_footer")).clear();
     wd.findElement(By.name("group_footer")).sendKeys("hometaskfooter");
-    wd.findElement(By.name("submit")).click();
-    wd.findElement(By.linkText("group page")).click();
+  }
+
+  private void initNewGroupCreation() {
+    wd.findElement(By.name("new")).click();
+  }
+
+  private void gotoGroupsPage() {
+    wd.findElement(By.linkText("groups")).click();
   }
 
   @AfterMethod
@@ -57,7 +84,7 @@ public class GroupTestCreation {
     wd.quit();
   }
 
-  public static boolean isAlertPresent(FirefoxDriver wd) {
+  public static boolean isAlertPresent(ChromeDriver wd) {
     try {
       wd.switchTo().alert();
       return true;

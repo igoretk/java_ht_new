@@ -30,11 +30,19 @@
       <file leaf-file-name="GroupTestCreation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/GroupTestCreation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="30" column="31" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="31" />
+            <state relative-caret-position="378">
+              <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
               <folding>
-                <element signature="e#1990#1991#0" expanded="true" />
-                <element signature="e#2009#2010#0" expanded="true" />
+                <element signature="e#1437#1438#0" expanded="true" />
+                <element signature="e#1496#1497#0" expanded="true" />
+                <element signature="e#1539#1540#0" expanded="true" />
+                <element signature="e#1590#1591#0" expanded="true" />
+                <element signature="e#2193#2194#0" expanded="true" />
+                <element signature="e#2241#2242#0" expanded="true" />
+                <element signature="e#2276#2277#0" expanded="true" />
+                <element signature="e#2331#2332#0" expanded="true" />
+                <element signature="e#2374#2375#0" expanded="true" />
+                <element signature="e#2393#2394#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -530,6 +538,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RunManager" selected="TestNG.GroupTestCreation">
     <configuration default="false" name="GroupTestCreation" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
@@ -844,6 +853,12 @@
     <history-entry file="GroupTestCreation - 2016.10.27 at 19h 04m 41s.xml">
       <configuration name="GroupTestCreation" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="GroupTestCreation - 2016.10.27 at 19h 09m 39s.xml">
+      <configuration name="GroupTestCreation" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GroupTestCreation - 2016.10.27 at 19h 17m 06s.xml">
+      <configuration name="GroupTestCreation" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -900,11 +915,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/GroupTestCreation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="31" />
+        <state relative-caret-position="378">
+          <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
           <folding>
-            <element signature="e#1990#1991#0" expanded="true" />
-            <element signature="e#2009#2010#0" expanded="true" />
+            <element signature="e#1437#1438#0" expanded="true" />
+            <element signature="e#1496#1497#0" expanded="true" />
+            <element signature="e#1539#1540#0" expanded="true" />
+            <element signature="e#1590#1591#0" expanded="true" />
+            <element signature="e#2193#2194#0" expanded="true" />
+            <element signature="e#2241#2242#0" expanded="true" />
+            <element signature="e#2276#2277#0" expanded="true" />
+            <element signature="e#2331#2332#0" expanded="true" />
+            <element signature="e#2374#2375#0" expanded="true" />
+            <element signature="e#2393#2394#0" expanded="true" />
           </folding>
         </state>
       </provider>
