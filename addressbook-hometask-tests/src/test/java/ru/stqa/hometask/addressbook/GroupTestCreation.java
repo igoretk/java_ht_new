@@ -5,18 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-
 import java.util.concurrent.TimeUnit;
-import java.util.Date;
-import java.io.File;
 
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
-
-import static org.openqa.selenium.OutputType.*;
 
 public class GroupTestCreation {
   WebDriver wd;
@@ -25,18 +16,18 @@ public class GroupTestCreation {
   public void setUp() throws Exception {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    login();
+    login("admin", "secret");
 
   }
 
-  private void login() {
+  private void login(String username, String password) {
     wd.get("http://localhost/addressbook/group.php");
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys("admin");
+    wd.findElement(By.name("user")).sendKeys(username);
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys("secret");
+    wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
@@ -46,7 +37,7 @@ public class GroupTestCreation {
 
     gotoGroupsPage();
     initNewGroupCreation();
-    fillingTheForm();
+    fillingTheForm(new DataGroupFilling("hometask1", "hometaskheader", "hometaskfooter"));
     submitNewGroupCreation();
     goBackToGroupPage();
   }
@@ -59,16 +50,17 @@ public class GroupTestCreation {
     wd.findElement(By.name("submit")).click();
   }
 
-  private void fillingTheForm() {
+  private void fillingTheForm(DataGroupFilling dataGroupFilling) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys("hometask1");
+    wd.findElement(By.name("group_name")).sendKeys(dataGroupFilling.getGroupName());
     wd.findElement(By.name("group_header")).click();
     wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys("hometaskheader");
+    wd.findElement(By.name("group_header")).sendKeys(dataGroupFilling.getGroupHeader());
     wd.findElement(By.name("group_footer")).click();
     wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys("hometaskfooter");
+    wd.findElement(By.name("group_footer")).sendKeys(
+            dataGroupFilling.getGroupFooter());
   }
 
   private void initNewGroupCreation() {
