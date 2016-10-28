@@ -36,15 +36,10 @@ public class ContactTestCreation {
   public void testContactCreation() throws InterruptedException {
 
     initNewContactCreation();
-  //  Thread.sleep(5000); //temporary just to see what happens in browser
     primaryInfoFill(new PrimaryInfoData("firsname field", "middle name field", "last name field", "nickName", "title field", "company field", "address field"));
-  //  Thread.sleep(5000); //temporary just to see what happens in browser
     phoneInfoFill(new PhoneInfoData("123121", "21321321", "321321321", "32112"));
-  //  Thread.sleep(5000); //temporary just to see what happens in browser
     secondaryInfoFill(new SecondaryInfoData("secondary address bla bla bla", "additional info I love cats"));
-  //  Thread.sleep(5000); //temporary just to see what happens in browser
     submitNewContactCreation();
- //   Thread.sleep(5000); //temporary just to see what happens in browser
   }
 
   private void submitNewContactCreation() {
