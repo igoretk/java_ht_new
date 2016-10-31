@@ -7,11 +7,11 @@ public class GroupTestCreation extends TestBase {
 
   @Test
   public void testGroupCreation() {
-    gotoGroupsPage();
-    initNewGroupCreation();
-    fillingTheForm(new DataGroupFilling("hometask1", "hometaskheader", "hometaskfooter"));
-    submitNewGroupCreation();
-    goBackToGroupPage();
+    applicationManager.gotoGroupsPage();
+    applicationManager.initNewGroupCreation();
+    applicationManager.fillingTheForm(new DataGroupFilling("hometask1", "hometaskheader", "hometaskfooter"));
+    applicationManager.submitNewGroupCreation();
+    applicationManager.goBackToGroupPage();
   }
 
 }
