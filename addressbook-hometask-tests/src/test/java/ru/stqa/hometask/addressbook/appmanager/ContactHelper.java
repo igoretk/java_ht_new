@@ -43,4 +43,16 @@ public class ContactHelper extends HelperBase {
   public void initNewContactCreation() {
     click(By.linkText("add new"));
   }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void selectToEditContactPrimaryInfo() {
+    click(By.xpath(".//*[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+  }
+
+  public void submitEditContact() {
+    click(By.name("update"));
+  }
 }
