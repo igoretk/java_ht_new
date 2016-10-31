@@ -1,4 +1,4 @@
-package ru.stqa.hometask.addressbook;
+package ru.stqa.hometask.addressbook.model;
 
 public class PhoneInfoData {
   private final String homePhone;
