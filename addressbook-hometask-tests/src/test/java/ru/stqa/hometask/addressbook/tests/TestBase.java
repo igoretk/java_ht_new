@@ -7,7 +7,7 @@ import ru.stqa.hometask.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
-  protected final ApplicationManager applicationManager = new ApplicationManager(BrowserType.FIREFOX);
+  protected final ApplicationManager applicationManager = new ApplicationManager(BrowserType.CHROME);
 
   @BeforeMethod
   public void setUp() throws Exception {
