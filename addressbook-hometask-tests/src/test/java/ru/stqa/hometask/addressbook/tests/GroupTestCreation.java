@@ -9,7 +9,7 @@ public class GroupTestCreation extends TestBase {
   public void testGroupCreation() {
     applicationManager.getNavigationHelper().gotoGroupsPage();
     applicationManager.getGroupHelper().initNewGroupCreation();
-    applicationManager.getGroupHelper().fillingTheForm(new DataGroupFilling("hometask1", "hometaskheader", "hometaskfooter"));
+    applicationManager.getGroupHelper().fillingTheForm(new DataGroupFilling("hometask1", null, null));
     applicationManager.getGroupHelper().submitNewGroupCreation();
     applicationManager.getGroupHelper().goBackToGroupPage();
   }
