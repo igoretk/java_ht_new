@@ -10,7 +10,7 @@ public class GroupTestModify extends TestBase{
     applicationManager.getNavigationHelper().gotoGroupsPage();
     applicationManager.getGroupHelper().selectGroup();
     applicationManager.getGroupHelper().editGroup();
-    applicationManager.getGroupHelper().fillingTheForm(new DataGroupFilling("1", "2", "3"));
+    applicationManager.getGroupHelper().fillingTheForm(new DataGroupFilling("hometask1", null, null));
     applicationManager.getGroupHelper().submitEditGroup();
     applicationManager.getGroupHelper().goBackToGroupPage();
 
