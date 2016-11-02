@@ -14,7 +14,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void submitNewContactCreation() {
-    click(By.xpath("//div[@id='content']/form/input[21]"));
+    click(By.xpath(".//*[@id='content']//input[@value='Enter']"));
   }
 
   public void secondaryInfoFill(SecondaryInfoData secondaryInfoData) {
@@ -49,7 +49,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectToEditContactPrimaryInfo() {
-    click(By.xpath(".//*[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+    click(By.xpath(".//*[@id='maintable']//*[@alt ='Edit']"));
   }
 
   public void submitEditContact() {
@@ -57,7 +57,20 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deleteContact() {
-    click(By.xpath(".//*[@id='content']/form[2]/div[2]/input"));
+    click(By.xpath(".//*[@id='content']//input[@value='Delete']"));
     wd.switchTo().alert().accept();
+  }
+
+  public void createContact(PrimaryInfoData contact1, PhoneInfoData contact13, SecondaryInfoData contact12) {
+    initNewContactCreation();
+    primaryInfoFill(contact1);
+    phoneInfoFill(contact13);
+    secondaryInfoFill(contact12);
+    submitNewContactCreation();
+
+  }
+
+  public boolean isAnyContactThere() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
