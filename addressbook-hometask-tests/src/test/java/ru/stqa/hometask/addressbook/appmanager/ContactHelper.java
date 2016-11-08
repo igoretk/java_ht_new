@@ -67,10 +67,19 @@ public class ContactHelper extends HelperBase {
     phoneInfoFill(contact13);
     secondaryInfoFill(contact12);
     submitNewContactCreation();
+    getBackHomePage();
 
+  }
+
+  public void getBackHomePage() {
+    click(By.id("logo"));
   }
 
   public boolean isAnyContactThere() {
     return isElementPresent(By.name("selected[]"));
+  }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }

@@ -20,5 +20,10 @@ public class NavigationHelper extends HelperBase {
     click(By.linkText("groups"));
   }
 
-
+  public void gotoHomePageForContactCreation() {
+    if (isElementPresent(By.name("MainForm"))) {
+      return;
+    }
+    click(By.linkText("home"));
+  }
 }
