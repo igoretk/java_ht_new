@@ -28,8 +28,8 @@ public class GroupHelper extends  HelperBase {
     type(By.name("group_footer"), dataGroupFilling.getGroupFooter());
   }
 
-  public void selectGroup() {
-    click(By.name("selected[]"));
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void editGroup() {

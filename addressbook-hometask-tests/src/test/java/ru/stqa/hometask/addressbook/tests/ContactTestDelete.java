@@ -18,7 +18,7 @@ public class ContactTestDelete extends TestBase {
                       new SecondaryInfoData("secondary address bla bla bla", "additional info I love cats"));
 
     }
-    applicationManager.getContactHelper().selectContact();
+    applicationManager.getContactHelper().selectContact(0);
     applicationManager.getContactHelper().deleteContact();
     applicationManager.getContactHelper().getBackHomePage();
     int afterContactCounter = applicationManager.getContactHelper().getContactCount();

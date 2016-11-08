@@ -18,7 +18,7 @@ public class ContactTestModify extends TestBase{
                       new SecondaryInfoData("secondary address bla bla bla", "additional info I love cats"));
 
     }
-    applicationManager.getContactHelper().selectContact();
+    applicationManager.getContactHelper().selectContact(beforeContactCounter - 1);
     applicationManager.getContactHelper().selectToEditContactPrimaryInfo();
     applicationManager.getContactHelper().primaryInfoFill(new PrimaryInfoData("1", "2", "3", "4", null, "6", null));
     applicationManager.getContactHelper().submitEditContact();

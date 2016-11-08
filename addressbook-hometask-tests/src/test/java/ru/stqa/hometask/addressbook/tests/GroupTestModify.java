@@ -1,6 +1,5 @@
 package ru.stqa.hometask.addressbook.tests;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataGroupFilling;
@@ -14,7 +13,7 @@ public class GroupTestModify extends TestBase{
       applicationManager.getGroupHelper().createGroup(new DataGroupFilling("t1", "t2", "t3"));
     }
     int beforeGroupCounter = applicationManager.getGroupHelper().getGroupCount();
-    applicationManager.getGroupHelper().selectGroup();
+    applicationManager.getGroupHelper().selectGroup(beforeGroupCounter - 1);
     applicationManager.getGroupHelper().editGroup();
     applicationManager.getGroupHelper().fillingTheForm(new DataGroupFilling("hometask1", null, null));
     applicationManager.getGroupHelper().submitEditGroup();
