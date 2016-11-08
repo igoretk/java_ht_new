@@ -10,7 +10,6 @@ public class ContactTestDelete extends TestBase {
   @Test
   public void testContactDelete() {
     applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
-    int beforeContactCounter = applicationManager.getContactHelper().getContactCount();
     if (!applicationManager.getContactHelper().isAnyContactThere()) {
       applicationManager.getContactHelper().
               createContact(new PrimaryInfoData("firsname field", "middle name field", "last name field", "nickName", "title field", "company field", "address field"),
@@ -18,6 +17,7 @@ public class ContactTestDelete extends TestBase {
                       new SecondaryInfoData("secondary address bla bla bla", "additional info I love cats"));
 
     }
+    int beforeContactCounter = applicationManager.getContactHelper().getContactCount();
     applicationManager.getContactHelper().selectContact(0);
     applicationManager.getContactHelper().deleteContact();
     applicationManager.getContactHelper().getBackHomePage();

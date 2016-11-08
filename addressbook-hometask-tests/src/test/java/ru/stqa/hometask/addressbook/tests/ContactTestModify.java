@@ -10,7 +10,6 @@ public class ContactTestModify extends TestBase{
   @Test
   public void testContactModify() {
     applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
-    int beforeContactCounter = applicationManager.getContactHelper().getContactCount();
     if (!applicationManager.getContactHelper().isAnyContactThere()) {
       applicationManager.getContactHelper().
               createContact(new PrimaryInfoData("firsname field", "middle name field", "last name field", "nickName", "title field", "company field", "address field"),
@@ -18,6 +17,7 @@ public class ContactTestModify extends TestBase{
                       new SecondaryInfoData("secondary address bla bla bla", "additional info I love cats"));
 
     }
+    int beforeContactCounter = applicationManager.getContactHelper().getContactCount();
     applicationManager.getContactHelper().selectContact(beforeContactCounter - 1);
     applicationManager.getContactHelper().selectToEditContactPrimaryInfo();
     applicationManager.getContactHelper().primaryInfoFill(new PrimaryInfoData("1", "2", "3", "4", null, "6", null));
