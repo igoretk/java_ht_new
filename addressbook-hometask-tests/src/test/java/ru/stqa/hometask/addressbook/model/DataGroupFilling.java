@@ -1,18 +1,18 @@
 package ru.stqa.hometask.addressbook.model;
 
 public class DataGroupFilling {
-  private final String id;
+  private int id;
   private final String groupName;
   private final String groupHeader;
   private final String groupFooter;
 
   public DataGroupFilling( String groupName, String groupHeader, String groupFooter) {
-    this.id = null;
+    this.id = 0;
     this.groupName = groupName;
     this.groupHeader = groupHeader;
     this.groupFooter = groupFooter;
   }
-  public DataGroupFilling(String id, String groupName, String groupHeader, String groupFooter) {
+  public DataGroupFilling(int id, String groupName, String groupHeader, String groupFooter) {
     this.id = id;
     this.groupName = groupName;
     this.groupHeader = groupHeader;
@@ -31,8 +31,12 @@ public class DataGroupFilling {
     return groupFooter;
   }
 
-  public String getId() {
+  public int getId() {
     return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   @Override
@@ -42,17 +46,19 @@ public class DataGroupFilling {
 
     DataGroupFilling that = (DataGroupFilling) o;
 
-    if (id != null ? !id.equals(that.id) : that.id != null) return false;
+    if (id != that.id) return false;
     return groupName != null ? groupName.equals(that.groupName) : that.groupName == null;
 
   }
 
   @Override
   public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
+    int result = id;
     result = 31 * result + (groupName != null ? groupName.hashCode() : 0);
     return result;
   }
+
+
 
   @Override
   public String toString() {
