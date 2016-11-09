@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataGroupFilling;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class GroupTestModify extends TestBase{
@@ -33,11 +34,16 @@ public class GroupTestModify extends TestBase{
     List<DataGroupFilling> before = applicationManager.getGroupHelper().getGroupList();
     applicationManager.getGroupHelper().selectGroup(before.size() - 1);
     applicationManager.getGroupHelper().editGroup();
-    applicationManager.getGroupHelper().fillingTheForm(new DataGroupFilling("hometask1", null, null));
+    DataGroupFilling group = new DataGroupFilling(before.get(before.size() - 1).getId(), "test1", "test2", "test3");
+    applicationManager.getGroupHelper().fillingTheForm(group);
     applicationManager.getGroupHelper().submitEditGroup();
     applicationManager.getGroupHelper().goBackToGroupPage();
     List<DataGroupFilling> after = applicationManager.getGroupHelper().getGroupList();
     Assert.assertEquals(before.size(), after.size());
+
+    before.remove(before.size() - 1);
+    before.add(group);
+    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after) );
 
   }
 
