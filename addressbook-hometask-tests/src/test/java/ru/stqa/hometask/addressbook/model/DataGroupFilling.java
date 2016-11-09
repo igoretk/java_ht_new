@@ -22,4 +22,29 @@ public class DataGroupFilling {
   public String getGroupFooter() {
     return groupFooter;
   }
+
+  @Override
+  // преобразуем имя группы в строку
+  public String toString() {
+    return "DataGroupFilling{" +
+            "groupName='" + groupName + '\'' +
+            '}';
+  }
+
+  @Override
+  // генерируем метод equals для сравнения объектов DataGroupFilling
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    DataGroupFilling that = (DataGroupFilling) o;
+
+    return groupName != null ? groupName.equals(that.groupName) : that.groupName == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    return groupName != null ? groupName.hashCode() : 0;
+  }
 }
