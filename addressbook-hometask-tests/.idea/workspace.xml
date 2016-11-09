@@ -83,8 +83,8 @@
       <file leaf-file-name="GroupTestCreation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestCreation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="89">
+              <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -543,8 +543,8 @@
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestDelete.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestModify.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/appmanager/GroupHelper.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestCreation.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/model/DataGroupFilling.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestCreation.java" />
       </list>
     </option>
   </component>
@@ -1200,8 +1200,8 @@
     <history-entry file="GroupTestCreation_testGroupCreationWithCollection - 2016.11.09 at 19h 40m 24s.xml">
       <configuration name="GroupTestCreation.testGroupCreationWithCollection" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="GroupTestDelete_testGroupDeleteWithCollection - 2016.11.09 at 16h 25m 59s.xml">
-      <configuration name="GroupTestDelete.testGroupDeleteWithCollection" configurationId="TestNG" />
+    <history-entry file="GroupTestCreation_testGroupCreationWithCollection - 2016.11.09 at 20h 10m 48s.xml">
+      <configuration name="GroupTestCreation.testGroupCreationWithCollection" configurationId="TestNG" />
     </history-entry>
     <history-entry file="GroupTestDelete_testGroupDeleteWithCollection - 2016.11.09 at 16h 30m 21s.xml">
       <configuration name="GroupTestDelete.testGroupDeleteWithCollection" configurationId="TestNG" />
@@ -1761,13 +1761,101 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestCreation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="89">
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>selenium-server-standalone-2.48.2</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>addressbook-hometask-tests</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: cglib:cglib-nodep:2.1_3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

@@ -28,13 +28,14 @@ public class GroupTestCreation extends TestBase {
     List<DataGroupFilling> after = applicationManager.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1);
 
-    int max = 0;
+   /* int max = 0;                        // заменяем поиск максимума встроенной в java 1.8 лямбда выражением
     for (DataGroupFilling d : after) {
       if (d.getId() > max) {
         max = d.getId();
       }
-    }
-    group.setId(max);
+    }*/
+
+    group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(group);
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 
