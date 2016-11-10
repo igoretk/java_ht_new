@@ -2,9 +2,8 @@ package ru.stqa.hometask.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.stqa.hometask.addressbook.model.PhoneInfoData;
-import ru.stqa.hometask.addressbook.model.PrimaryInfoData;
-import ru.stqa.hometask.addressbook.model.SecondaryInfoData;
+import ru.stqa.hometask.addressbook.model.DataContactFilling;
+
 
 public class ContactHelper extends HelperBase {
 
@@ -17,26 +16,24 @@ public class ContactHelper extends HelperBase {
     click(By.xpath(".//*[@id='content']//input[@value='Enter']"));
   }
 
-  public void secondaryInfoFill(SecondaryInfoData secondaryInfoData) {
-    type(By.name("address2"), secondaryInfoData.getSecondaryAddress());
-    type(By.name("notes"), secondaryInfoData.getNotes());
-  }
+  public void fillingTheForms (DataContactFilling dataContactFilling) {
 
-  public void phoneInfoFill(PhoneInfoData phoneInfoData) {
-    type(By.name("home"), phoneInfoData.getHomePhone());
-    type(By.name("mobile"), phoneInfoData.getMobilePhone());
-    type(By.name("work"), phoneInfoData.getWorkPhone());
-    type(By.name("fax"), phoneInfoData.getFax());
-  }
+    type(By.name("firstname"), dataContactFilling.getFirstName()); //primary info filling
+    type(By.name("middlename"), dataContactFilling.getMiddleName());
+    type(By.name("lastname"), dataContactFilling.getLastName());
+    type(By.name("nickname"), dataContactFilling.getNickName());
+    type(By.name("title"), dataContactFilling.getTitle());
+    type(By.name("company"), dataContactFilling.getCompany());
+    type(By.name("address"), dataContactFilling.getAddress());
 
-  public void primaryInfoFill(PrimaryInfoData primaryInfoData) {
-    type(By.name("firstname"), primaryInfoData.getFirstName());
-    type(By.name("middlename"), primaryInfoData.getMiddleName());
-    type(By.name("lastname"), primaryInfoData.getLastName());
-    type(By.name("nickname"), primaryInfoData.getNickName());
-    type(By.name("title"), primaryInfoData.getTitle());
-    type(By.name("company"), primaryInfoData.getCompany());
-    type(By.name("address"), primaryInfoData.getAddress());
+    type(By.name("home"), dataContactFilling.getHomePhone()); // phone info filling
+    type(By.name("mobile"), dataContactFilling.getMobilePhone());
+    type(By.name("work"), dataContactFilling.getWorkPhone());
+    type(By.name("fax"), dataContactFilling.getFax());
+
+    type(By.name("address2"), dataContactFilling.getSecondaryAddress()); // secondary info filling
+    type(By.name("notes"), dataContactFilling.getNotes());
+
 
   }
 
@@ -61,11 +58,9 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void createContact(PrimaryInfoData contact1, PhoneInfoData contact13, SecondaryInfoData contact12) {
+  public void createContact(DataContactFilling contact) {
     initNewContactCreation();
-    primaryInfoFill(contact1);
-    phoneInfoFill(contact13);
-    secondaryInfoFill(contact12);
+    fillingTheForms(contact);
     submitNewContactCreation();
     getBackHomePage();
 
