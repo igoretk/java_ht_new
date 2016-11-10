@@ -2,7 +2,11 @@ package ru.stqa.hometask.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ContactHelper extends HelperBase {
@@ -76,5 +80,16 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public List<DataContactFilling> getContactList() {
+    List<DataContactFilling> contacts = new ArrayList<DataContactFilling>();
+    List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      DataContactFilling contact = new DataContactFilling(name, null, null, null, null, null, null, null, null, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
   }
 }

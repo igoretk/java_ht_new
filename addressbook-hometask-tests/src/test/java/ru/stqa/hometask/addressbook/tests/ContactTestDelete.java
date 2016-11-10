@@ -2,9 +2,7 @@ package ru.stqa.hometask.addressbook.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.stqa.hometask.addressbook.model.PhoneInfoData;
-import ru.stqa.hometask.addressbook.model.PrimaryInfoData;
-import ru.stqa.hometask.addressbook.model.SecondaryInfoData;
+import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
 public class ContactTestDelete extends TestBase {
   @Test
@@ -12,9 +10,9 @@ public class ContactTestDelete extends TestBase {
     applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
     if (!applicationManager.getContactHelper().isAnyContactThere()) {
       applicationManager.getContactHelper().
-              createContact(new PrimaryInfoData("firsname field", "middle name field", "last name field", "nickName", "title field", "company field", "address field"),
-                      new PhoneInfoData("123121", "21321321", "321321321", "32112"),
-                      new SecondaryInfoData("secondary address bla bla bla", "additional info I love cats"));
+              createContact(new DataContactFilling("firsname field", "middle name field", "last name field", "nickName", "title field", "company field", "address field",
+                      "123121", "21321321", "321321321", "32112",
+                      "secondary address bla bla bla", "additional info I love cats"));
 
     }
     int beforeContactCounter = applicationManager.getContactHelper().getContactCount();
