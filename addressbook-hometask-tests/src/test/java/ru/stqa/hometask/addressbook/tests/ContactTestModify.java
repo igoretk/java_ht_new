@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -67,5 +68,27 @@ public class ContactTestModify extends TestBase {
     Assert.assertEquals(after.size(), before.size());
 
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+  }
+  @Test
+  public void testContactModifyWithHashSetWithSort() {
+    applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
+    if (!applicationManager.getContactHelper().isAnyContactThere()) {
+      applicationManager.getContactHelper().
+              createContact(new DataContactFilling("1", "2", "3", "4", null, null, null, null, null, null, null, null, null));
+    }
+    List<DataContactFilling> before = applicationManager.getContactHelper().getContactList();
+    applicationManager.getContactHelper().selectContact(before.size() - 1);
+    applicationManager.getContactHelper().selectToEditContactPrimaryInfo();
+    DataContactFilling contact = new DataContactFilling(before.get(before.size() - 1).getId(), "1", "2", "3", "4", null, null, null, null, null, null, null, null, null);
+    applicationManager.getContactHelper().fillingTheForms(contact);
+    applicationManager.getContactHelper().submitEditContact();
+    applicationManager.getContactHelper().getBackHomePage();
+    List<DataContactFilling> after = applicationManager.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size());
+
+    Comparator<? super DataContactFilling> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
   }
 }
