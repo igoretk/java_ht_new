@@ -68,7 +68,7 @@ public class ContactTestCreation extends TestBase {
 
     dataContactFilling.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(dataContactFilling);
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before));
   }
 
   @Test
