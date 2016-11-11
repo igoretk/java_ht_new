@@ -4,7 +4,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
-public class ContactTestModify extends TestBase{
+import java.util.HashSet;
+import java.util.List;
+
+public class ContactTestModify extends TestBase {
   @Test
   public void testContactModify() {
     applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
@@ -25,12 +28,13 @@ public class ContactTestModify extends TestBase{
     Assert.assertEquals(afterContactCounter, beforeContactCounter);
 
   }
+
   @Test
   public void testContactModifyWithCollectionSortedLists() {
     applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
     if (!applicationManager.getContactHelper().isAnyContactThere()) {
       applicationManager.getContactHelper().
-              createContact(new DataContactFilling("firsname field", "middle name field", "last name field", "nickName", "title field", "company field", "address field",
+              createContact(new DataContactFilling("1", "middle name field", "last name field", "nickName", "title field", "company field", "address field",
                       "123121", "21321321", "321321321", "32112",
                       "secondary address bla bla bla", "additional info I love cats"));
     }
@@ -43,5 +47,25 @@ public class ContactTestModify extends TestBase{
     int afterContactCounter = applicationManager.getContactHelper().getContactCount();
     Assert.assertEquals(afterContactCounter, beforeContactCounter);
 
+  }
+
+  @Test
+  public void testContactModifyWithHashSet() {
+    applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
+    if (!applicationManager.getContactHelper().isAnyContactThere()) {
+      applicationManager.getContactHelper().
+              createContact(new DataContactFilling("1", "2", "3", "4", null, null, null, null, null, null, null, null, null));
+    }
+    List<DataContactFilling> before = applicationManager.getContactHelper().getContactList();
+    applicationManager.getContactHelper().selectContact(before.size() - 1);
+    applicationManager.getContactHelper().selectToEditContactPrimaryInfo();
+    DataContactFilling contact = new DataContactFilling(before.get(before.size() - 1).getId(), "1", "2", "3", "4", null, null, null, null, null, null, null, null, null);
+    applicationManager.getContactHelper().fillingTheForms(contact);
+    applicationManager.getContactHelper().submitEditContact();
+    applicationManager.getContactHelper().getBackHomePage();
+    List<DataContactFilling> after = applicationManager.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size());
+
+    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 }

@@ -20,7 +20,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath(".//*[@id='content']//input[@value='Enter']"));
   }
 
-  public void fillingTheForms (DataContactFilling dataContactFilling) {
+  public void fillingTheForms(DataContactFilling dataContactFilling) {
 
     type(By.name("firstname"), dataContactFilling.getFirstName()); //primary info filling
     type(By.name("middlename"), dataContactFilling.getMiddleName());
@@ -84,13 +84,13 @@ public class ContactHelper extends HelperBase {
 
   public List<DataContactFilling> getContactList() {
     List<DataContactFilling> contacts = new ArrayList<DataContactFilling>();
-   // List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']"));
-   List<WebElement> elements = wd.findElements(By.xpath(".//*[@name='entry']"));
+    List<WebElement> elements = wd.findElements(By.xpath(".//*[@name='entry']"));
 
 
     for (WebElement element : elements) {
       String name = element.getText();
-      DataContactFilling contact = new DataContactFilling(name, null, null, null, null, null, null, null, null, null, null, null, null);
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      DataContactFilling contact = new DataContactFilling(id, name, null, null, null, null, null, null, null, null, null, null, null, null);
       contacts.add(contact);
     }
     return contacts;
