@@ -13,39 +13,38 @@ public class ContactTestCreation extends TestBase {
 
   @Test
   public void testContactCreation() throws InterruptedException {
-    applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
-    int beforeContactCounter = applicationManager.getContactHelper().getContactCount();
-    applicationManager.getContactHelper().
-            createContact(new DataContactFilling("firsname field", "middle name field", "last name field", "nickName", "title field", "company field", "address field",
-                    "123121", "21321321", "321321321", "32112",
-                    "secondary address bla bla bla", "additional info I love cats"));
-    int afterContactCounter = applicationManager.getContactHelper().getContactCount();
+    app.goTo().ContactPage();
+    int beforeContactCounter = app.contact().getContactCount();
+    app.contact().create(new DataContactFilling("firsname field", "middle name field", "last name field", "nickName",
+            "title field", "company field", "address field",
+            "123121", "21321321", "321321321", "32112",
+            "secondary address bla bla bla", "additional info I love cats"));
+    int afterContactCounter = app.contact().getContactCount();
     Assert.assertEquals(afterContactCounter, beforeContactCounter + 1);
 
   }
 
   @Test
   public void testContactCreationWithCollection() {
-    applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
-    List<DataContactFilling> before = applicationManager.getContactHelper().getContactList();
-    applicationManager.getContactHelper().
-            createContact(new DataContactFilling("firsname field", "middle name field", "last name field", "nickName", "title field", "company field", "address field",
-                    "123121", "21321321", "321321321", "32112",
-                    "secondary address bla bla bla", "additional info I love cats"));
-    List<DataContactFilling> after = applicationManager.getContactHelper().getContactList();
+    app.goTo().ContactPage();
+    List<DataContactFilling> before = app.contact().list();
+    app.contact().create(new DataContactFilling("firsname field", "middle name field", "last name field", "nickName",
+            "title field", "company field", "address field",
+            "123121", "21321321", "321321321", "32112",
+            "secondary address bla bla bla", "additional info I love cats"));
+    List<DataContactFilling> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
   }
 
   @Test
   public void testContactCreationWithCollectionSearchMax() {
-    applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
-    List<DataContactFilling> before = applicationManager.getContactHelper().getContactList();
+    app.goTo().ContactPage();
+    List<DataContactFilling> before = app.contact().list();
     DataContactFilling dataContactFilling = new DataContactFilling("1", "2", "3", null, null, null, null, null, null, null, null, null, null);
-    applicationManager.getContactHelper().createContact(dataContactFilling);
-    List<DataContactFilling> after = applicationManager.getContactHelper().getContactList();
+    app.contact().create(dataContactFilling);
+    List<DataContactFilling> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
-
 
     int max = 0;
     for (DataContactFilling d : after) {
@@ -57,13 +56,14 @@ public class ContactTestCreation extends TestBase {
     before.add(dataContactFilling);
     Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before));
   }
+
   @Test
   public void testContactCreationWithCollectionLambda() {
-    applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
-    List<DataContactFilling> before = applicationManager.getContactHelper().getContactList();
+    app.goTo().ContactPage();
+    List<DataContactFilling> before = app.contact().list();
     DataContactFilling dataContactFilling = new DataContactFilling("1", "2", "3", "4", null, null, null, null, null, null, null, null, null);
-    applicationManager.getContactHelper().createContact(dataContactFilling);
-    List<DataContactFilling> after = applicationManager.getContactHelper().getContactList();
+    app.contact().create(dataContactFilling);
+    List<DataContactFilling> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     dataContactFilling.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
@@ -73,11 +73,11 @@ public class ContactTestCreation extends TestBase {
 
   @Test
   public void testContactCreationWithCollectionSort() {
-    applicationManager.getNavigationHelper().gotoHomePageForContactCreation();
-    List<DataContactFilling> before = applicationManager.getContactHelper().getContactList();
+    app.goTo().ContactPage();
+    List<DataContactFilling> before = app.contact().list();
     DataContactFilling dataContactFilling = new DataContactFilling("1", "2", "3", "4", null, null, null, null, null, null, null, null, null);
-    applicationManager.getContactHelper().createContact(dataContactFilling);
-    List<DataContactFilling> after = applicationManager.getContactHelper().getContactList();
+    app.contact().create(dataContactFilling);
+    List<DataContactFilling> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     dataContactFilling.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());

@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.hometask.addressbook.model.DataGroupFilling;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends  HelperBase {
 
@@ -36,6 +38,10 @@ public class GroupHelper extends  HelperBase {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  public void selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value = '" + id + "']")).click();
+  }
+
   public void editGroup() {
     click(By.name("edit"));
   }
@@ -48,17 +54,35 @@ public class GroupHelper extends  HelperBase {
     click(By.name("delete"));
   }
 
-  public void createGroup(DataGroupFilling group) {
+  public void create(DataGroupFilling group) {
     initNewGroupCreation();
     fillingTheForm(group);
     submitNewGroupCreation();
     goBackToGroupPage();
   }
-  public void modifyGroup(int indexOfGroup, DataGroupFilling group) {
-    selectGroup(indexOfGroup);
+  public void modify(DataGroupFilling group) {
+    selectGroupById(group.getId());
     editGroup();
     fillingTheForm(group);
     submitEditGroup();
+    goBackToGroupPage();
+  }
+  /*public void modify(int indexOfGroup, DataGroupFilling group) {
+    selectGroupById(indexOfGroup);
+    editGroup();
+    fillingTheForm(group);
+    submitEditGroup();
+    goBackToGroupPage();
+  }*/
+
+  public void delete(int indexOfGroup) {
+    selectGroup(indexOfGroup);
+    deleteGroup();
+    goBackToGroupPage();
+  }
+  public void delete(DataGroupFilling group) {
+    selectGroupById(group.getId());
+    deleteGroup();
     goBackToGroupPage();
   }
 
@@ -70,15 +94,28 @@ public class GroupHelper extends  HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<DataGroupFilling> getGroupList() {
+  public List<DataGroupFilling> list() {
     List<DataGroupFilling> groups = new ArrayList<DataGroupFilling>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      DataGroupFilling group = new DataGroupFilling(id, name, null, null);
+      DataGroupFilling group = new DataGroupFilling().withId(id).withGroupName(name);
       groups.add(group);
     }
     return groups;
   }
+  public Set<DataGroupFilling> all() {
+    Set<DataGroupFilling> groups = new HashSet<>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      DataGroupFilling group = new DataGroupFilling().withId(id).withGroupName(name);
+      groups.add(group);
+    }
+    return groups;
+  }
+
+
 }

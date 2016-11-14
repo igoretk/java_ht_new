@@ -8,23 +8,24 @@ import ru.stqa.hometask.addressbook.model.DataGroupFilling;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupTestModify extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        applicationManager.getNavigationHelper().gotoGroupsPage();
-        if (!applicationManager.getGroupHelper().isThereAnyGroup()) {
-            applicationManager.getGroupHelper().createGroup(new DataGroupFilling("t1", "t2", "t3"));
+        app.goTo().GroupPage();
+        if (app.group().list().size() == 0) {
+            app.group().create(new DataGroupFilling().withGroupName("t1").withGroupHeader("t2").withGroupFooter("t3"));
         }
     }
 
-    @Test
+    /*@Test
     public void testGroupModify() {
 
-        int beforeGroupCounter = applicationManager.getGroupHelper().getGroupCount();
-        applicationManager.getGroupHelper().modifyGroup(beforeGroupCounter - 1, new DataGroupFilling("hometask1", null, null));
-        int afterGroupCounter = applicationManager.getGroupHelper().getGroupCount();
+        int beforeGroupCounter = app.group().getGroupCount();
+        app.group().modify(beforeGroupCounter - 1, new DataGroupFilling().withGroupName("t1"));
+        int afterGroupCounter = app.group().getGroupCount();
         Assert.assertEquals(beforeGroupCounter, afterGroupCounter);
 
     }
@@ -32,11 +33,12 @@ public class GroupTestModify extends TestBase {
     @Test
     public void testGroupModifyWithCollection() {
 
-        List<DataGroupFilling> before = applicationManager.getGroupHelper().getGroupList();
+        List<DataGroupFilling> before = app.group().list();
         int indexOfGroup = before.size() - 1;
-        DataGroupFilling group = new DataGroupFilling(before.get(indexOfGroup).getId(), "test1", "test2", "test3");
-        applicationManager.getGroupHelper().modifyGroup(indexOfGroup, group);
-        List<DataGroupFilling> after = applicationManager.getGroupHelper().getGroupList();
+        DataGroupFilling group = new DataGroupFilling().
+                withId(before.get(indexOfGroup).getId()).withGroupName("test1").withGroupHeader("test2").withGroupFooter("test3");
+        app.group().modify(indexOfGroup, group);
+        List<DataGroupFilling> after = app.group().list();
         Assert.assertEquals(before.size(), after.size());
 
         before.remove(indexOfGroup);
@@ -48,11 +50,12 @@ public class GroupTestModify extends TestBase {
     @Test
     public void testGroupModifyWithCollectionSortedListsById() {
 
-        List<DataGroupFilling> before = applicationManager.getGroupHelper().getGroupList();
+        List<DataGroupFilling> before = app.group().list();
         int indexOfGroup = before.size() - 1;
-        DataGroupFilling group = new DataGroupFilling(before.get(indexOfGroup).getId(), "test1", "test2", "test3");
-        applicationManager.getGroupHelper().modifyGroup(indexOfGroup, group);
-        List<DataGroupFilling> after = applicationManager.getGroupHelper().getGroupList();
+        DataGroupFilling group = new DataGroupFilling().
+                withId(before.get(indexOfGroup).getId()).withGroupName("test1").withGroupHeader("test2").withGroupFooter("test3");
+        app.group().modify(indexOfGroup, group);
+        List<DataGroupFilling> after = app.group().list();
         Assert.assertEquals(before.size(), after.size());
 
         before.remove(indexOfGroup);
@@ -61,7 +64,21 @@ public class GroupTestModify extends TestBase {
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before, after);
+    } */
+    @Test
+    public void testGroupModifyWithUniqueId() {
 
+        Set<DataGroupFilling> before = app.group().all();
+        DataGroupFilling modifiedGroup = before.iterator().next();
+        DataGroupFilling group = new DataGroupFilling().
+                withId(modifiedGroup.getId()).withGroupName("test1").withGroupHeader("test2").withGroupFooter("test3");
+        app.group().modify(group);
+        Set<DataGroupFilling> after = app.group().all();
+        Assert.assertEquals(before.size(), after.size());
+
+        before.remove(modifiedGroup);
+        before.add(group);
+        Assert.assertEquals(before, after);
     }
 
 

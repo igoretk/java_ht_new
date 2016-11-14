@@ -1,43 +1,10 @@
 package ru.stqa.hometask.addressbook.model;
 
 public class DataGroupFilling {
-  private int id;
-  private final String groupName;
-  private final String groupHeader;
-  private final String groupFooter;
-
-  public DataGroupFilling( String groupName, String groupHeader, String groupFooter) {
-    this.id = 0;
-    this.groupName = groupName;
-    this.groupHeader = groupHeader;
-    this.groupFooter = groupFooter;
-  }
-  public DataGroupFilling(int id, String groupName, String groupHeader, String groupFooter) {
-    this.id = id;
-    this.groupName = groupName;
-    this.groupHeader = groupHeader;
-    this.groupFooter = groupFooter;
-  }
-
-  public String getGroupName() {
-    return groupName;
-  }
-
-  public String getGroupHeader() {
-    return groupHeader;
-  }
-
-  public String getGroupFooter() {
-    return groupFooter;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
+  private int id = 0;
+  private String groupName;
+  private String groupHeader;
+  private String groupFooter;
 
   @Override
   public boolean equals(Object o) {
@@ -58,6 +25,41 @@ public class DataGroupFilling {
     return result;
   }
 
+  public String getGroupName() {
+    return groupName;
+  }
+
+  public String getGroupHeader() {
+    return groupHeader;
+  }
+
+  public String getGroupFooter() {
+    return groupFooter;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public DataGroupFilling withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public DataGroupFilling withGroupName(String groupName) {
+    this.groupName = groupName;
+    return this;
+  }
+
+  public DataGroupFilling withGroupHeader(String groupHeader) {
+    this.groupHeader = groupHeader;
+    return this;
+  }
+
+  public DataGroupFilling withGroupFooter(String groupFooter) {
+    this.groupFooter = groupFooter;
+    return this;
+  }
 
 
   @Override
