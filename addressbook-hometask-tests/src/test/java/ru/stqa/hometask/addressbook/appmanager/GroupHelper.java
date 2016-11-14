@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.hometask.addressbook.model.DataGroupFilling;
+import ru.stqa.hometask.addressbook.model.Groups;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GroupHelper extends  HelperBase {
 
@@ -105,8 +104,8 @@ public class GroupHelper extends  HelperBase {
     }
     return groups;
   }
-  public Set<DataGroupFilling> all() {
-    Set<DataGroupFilling> groups = new HashSet<>();
+  public Groups all() {
+    Groups groups = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();

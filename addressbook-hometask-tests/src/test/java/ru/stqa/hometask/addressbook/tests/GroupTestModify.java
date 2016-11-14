@@ -1,14 +1,13 @@
 package ru.stqa.hometask.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataGroupFilling;
+import ru.stqa.hometask.addressbook.model.Groups;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class GroupTestModify extends TestBase {
 
@@ -66,19 +65,16 @@ public class GroupTestModify extends TestBase {
         Assert.assertEquals(before, after);
     } */
     @Test
-    public void testGroupModifyWithUniqueId() {
+    public void testGroupModifyWithUniqueIdAndHam() {
 
-        Set<DataGroupFilling> before = app.group().all();
+        Groups before = app.group().all();
         DataGroupFilling modifiedGroup = before.iterator().next();
         DataGroupFilling group = new DataGroupFilling().
                 withId(modifiedGroup.getId()).withGroupName("test1").withGroupHeader("test2").withGroupFooter("test3");
         app.group().modify(group);
-        Set<DataGroupFilling> after = app.group().all();
-        Assert.assertEquals(before.size(), after.size());
-
-        before.remove(modifiedGroup);
-        before.add(group);
-        Assert.assertEquals(before, after);
+        Groups after = app.group().all();
+        assertEquals(before.size(), after.size());
+        assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
     }
 
 
