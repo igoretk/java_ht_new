@@ -20,7 +20,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath(".//*[@id='content']//input[@value='Enter']"));
   }
 
-  public void fillingTheForms(DataContactFilling dataContactFilling) {
+  public void fill(DataContactFilling dataContactFilling) {
 
     type(By.name("firstname"), dataContactFilling.getFirstName()); //primary info filling
     type(By.name("middlename"), dataContactFilling.getMiddleName());
@@ -45,15 +45,15 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectContact(int index) {
+  public void select(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void selectToEditContactPrimaryInfo() {
+  public void clickToEdit() {
     click(By.xpath(".//*[@id='maintable']//*[@alt ='Edit']"));
   }
 
-  public void submitEditContact() {
+  public void submit() {
     click(By.name("update"));
   }
 
@@ -62,15 +62,27 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void createContact(DataContactFilling contact) {
+  public void create(DataContactFilling contact) {
     initNewContactCreation();
-    fillingTheForms(contact);
+    fill(contact);
     submitNewContactCreation();
-    getBackHomePage();
-
+    goToHomePage();
   }
 
-  public void getBackHomePage() {
+  public void modify(int index, DataContactFilling contact) {
+    select(index);
+    clickToEdit();
+    fill(contact);
+    submit();
+    goToHomePage();
+  }
+  public void delete(int index) {
+    select(index);
+    deleteContact();
+    goToHomePage();
+  }
+
+  public void goToHomePage() {
     click(By.id("logo"));
   }
 
@@ -82,7 +94,7 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<DataContactFilling> getContactList() {
+  public List<DataContactFilling> list() {
     List<DataContactFilling> contacts = new ArrayList<DataContactFilling>();
     List<WebElement> elements = wd.findElements(By.xpath(".//*[@name='entry']"));
 
