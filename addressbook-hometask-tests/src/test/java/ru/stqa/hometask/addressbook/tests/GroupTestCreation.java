@@ -11,29 +11,22 @@ public class GroupTestCreation extends TestBase {
 
   @Test
   public void testGroupCreation() {
-    applicationManager.getNavigationHelper().gotoGroupsPage();
-    int beforeGroupCounter = applicationManager.getGroupHelper().getGroupCount();
-    applicationManager.getGroupHelper().createGroup(new DataGroupFilling("1", "2", "3"));
-    int afterGroupCounter = applicationManager.getGroupHelper().getGroupCount();
+    app.goTo().GroupPage();
+    int beforeGroupCounter = app.group().getGroupCount();
+    app.group().create(new DataGroupFilling("1", "2", "3"));
+    int afterGroupCounter = app.group().getGroupCount();
     Assert.assertEquals(afterGroupCounter, beforeGroupCounter + 1);
 
   }
 
   @Test
   public void testGroupCreationWithCollection() {
-    applicationManager.getNavigationHelper().gotoGroupsPage();
-    List<DataGroupFilling> before = applicationManager.getGroupHelper().getGroupList();
+    app.goTo().GroupPage();
+    List<DataGroupFilling> before = app.group().list();
     DataGroupFilling group = new DataGroupFilling("1", "2", "3");
-    applicationManager.getGroupHelper().createGroup(group);
-    List<DataGroupFilling> after = applicationManager.getGroupHelper().getGroupList();
+    app.group().create(group);
+    List<DataGroupFilling> after = app.group().list();
     Assert.assertEquals(after.size(), before.size() + 1);
-
-   /* int max = 0;                        // заменяем поиск максимума в цикле встроенной в java 1.8 лямбда выражением
-    for (DataGroupFilling d : after) {
-      if (d.getId() > max) {
-        max = d.getId();
-      }
-    }*/
 
     group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(group);

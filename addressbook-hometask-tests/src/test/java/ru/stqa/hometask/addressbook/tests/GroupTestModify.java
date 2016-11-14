@@ -13,18 +13,18 @@ public class GroupTestModify extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        applicationManager.getNavigationHelper().gotoGroupsPage();
-        if (!applicationManager.getGroupHelper().isThereAnyGroup()) {
-            applicationManager.getGroupHelper().createGroup(new DataGroupFilling("t1", "t2", "t3"));
+        app.goTo().GroupPage();
+        if (app.group().list().size() == 0) {
+            app.group().create(new DataGroupFilling("t1", "t2", "t3"));
         }
     }
 
     @Test
     public void testGroupModify() {
 
-        int beforeGroupCounter = applicationManager.getGroupHelper().getGroupCount();
-        applicationManager.getGroupHelper().modifyGroup(beforeGroupCounter - 1, new DataGroupFilling("hometask1", null, null));
-        int afterGroupCounter = applicationManager.getGroupHelper().getGroupCount();
+        int beforeGroupCounter = app.group().getGroupCount();
+        app.group().modify(beforeGroupCounter - 1, new DataGroupFilling("hometask1", null, null));
+        int afterGroupCounter = app.group().getGroupCount();
         Assert.assertEquals(beforeGroupCounter, afterGroupCounter);
 
     }
@@ -32,11 +32,11 @@ public class GroupTestModify extends TestBase {
     @Test
     public void testGroupModifyWithCollection() {
 
-        List<DataGroupFilling> before = applicationManager.getGroupHelper().getGroupList();
+        List<DataGroupFilling> before = app.group().list();
         int indexOfGroup = before.size() - 1;
         DataGroupFilling group = new DataGroupFilling(before.get(indexOfGroup).getId(), "test1", "test2", "test3");
-        applicationManager.getGroupHelper().modifyGroup(indexOfGroup, group);
-        List<DataGroupFilling> after = applicationManager.getGroupHelper().getGroupList();
+        app.group().modify(indexOfGroup, group);
+        List<DataGroupFilling> after = app.group().list();
         Assert.assertEquals(before.size(), after.size());
 
         before.remove(indexOfGroup);
@@ -48,11 +48,11 @@ public class GroupTestModify extends TestBase {
     @Test
     public void testGroupModifyWithCollectionSortedListsById() {
 
-        List<DataGroupFilling> before = applicationManager.getGroupHelper().getGroupList();
+        List<DataGroupFilling> before = app.group().list();
         int indexOfGroup = before.size() - 1;
         DataGroupFilling group = new DataGroupFilling(before.get(indexOfGroup).getId(), "test1", "test2", "test3");
-        applicationManager.getGroupHelper().modifyGroup(indexOfGroup, group);
-        List<DataGroupFilling> after = applicationManager.getGroupHelper().getGroupList();
+        app.group().modify(indexOfGroup, group);
+        List<DataGroupFilling> after = app.group().list();
         Assert.assertEquals(before.size(), after.size());
 
         before.remove(indexOfGroup);

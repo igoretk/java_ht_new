@@ -1,45 +1,34 @@
 package ru.stqa.hometask.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataGroupFilling;
 
 import java.util.List;
 
 public class GroupTestDelete extends TestBase {
-  @Test
-  public void testGroupDelete() {
-    applicationManager.getNavigationHelper().gotoGroupsPage();
-    if (! applicationManager.getGroupHelper().isThereAnyGroup()) {
-      applicationManager.getGroupHelper().createGroup(new DataGroupFilling("1", "2", "3"));
-    }
-    int beforeGroupCounter = applicationManager.getGroupHelper().getGroupCount();
-    applicationManager.getGroupHelper().selectGroup(0);
-    applicationManager.getGroupHelper().deleteGroup();
-    applicationManager.getGroupHelper().goBackToGroupPage();
-    int afterGroupCounter = applicationManager.getGroupHelper().getGroupCount();
-    Assert.assertEquals(afterGroupCounter, beforeGroupCounter - 1);
 
+  @BeforeMethod
+  public void ensurePreconditions() {
+    app.goTo().GroupPage();
+    if (app.group().list().size() == 0) {
+      app.group().create(new DataGroupFilling("t1", "t2", "t3"));
+    }
   }
+
   @Test
   public void testGroupDeleteWithCollection() {
-    applicationManager.getNavigationHelper().gotoGroupsPage();
-    if (! applicationManager.getGroupHelper().isThereAnyGroup()) {
-      applicationManager.getGroupHelper().createGroup(new DataGroupFilling("test1", "test2", "test3"));
-    }
-    List<DataGroupFilling> before = applicationManager.getGroupHelper().getGroupList();
-    applicationManager.getGroupHelper().selectGroup(0);
-    applicationManager.getGroupHelper().deleteGroup();
-    applicationManager.getGroupHelper().goBackToGroupPage();
-    List<DataGroupFilling> after = applicationManager.getGroupHelper().getGroupList();
+    List<DataGroupFilling> before = app.group().list();
+    int indexOfGroup = before.size() - 1;
+    app.group().delete(indexOfGroup);
+    List<DataGroupFilling> after = app.group().list();
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(before.size() - 1); // делаем старый и новый списки одинаковыми и сравниваем поэлементно
-   /* for (int i = 0; i < after.size(); i++) {
-      Assert.assertEquals(before.get(i), after.get(i)); // можно делать без цикла, т.к среда разработки сама умеет сравнивать списки
-    }
-    */
+    before.remove(indexOfGroup);
     Assert.assertEquals(before, after);
 
   }
+
+
 }
