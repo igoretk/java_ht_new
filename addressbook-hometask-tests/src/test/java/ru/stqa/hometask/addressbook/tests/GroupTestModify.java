@@ -15,7 +15,7 @@ public class GroupTestModify extends TestBase {
     public void ensurePreconditions() {
         app.goTo().GroupPage();
         if (app.group().list().size() == 0) {
-            app.group().create(new DataGroupFilling("t1", "t2", "t3"));
+            app.group().create(new DataGroupFilling().withGroupName("t1").withGroupHeader("t2").withGroupFooter("t3"));
         }
     }
 
@@ -23,7 +23,7 @@ public class GroupTestModify extends TestBase {
     public void testGroupModify() {
 
         int beforeGroupCounter = app.group().getGroupCount();
-        app.group().modify(beforeGroupCounter - 1, new DataGroupFilling("hometask1", null, null));
+        app.group().modify(beforeGroupCounter - 1, new DataGroupFilling().withGroupName("t1"));
         int afterGroupCounter = app.group().getGroupCount();
         Assert.assertEquals(beforeGroupCounter, afterGroupCounter);
 
@@ -34,7 +34,8 @@ public class GroupTestModify extends TestBase {
 
         List<DataGroupFilling> before = app.group().list();
         int indexOfGroup = before.size() - 1;
-        DataGroupFilling group = new DataGroupFilling(before.get(indexOfGroup).getId(), "test1", "test2", "test3");
+        DataGroupFilling group = new DataGroupFilling().
+                withId(before.get(indexOfGroup).getId()).withGroupName("test1").withGroupHeader("test2").withGroupFooter("test3");
         app.group().modify(indexOfGroup, group);
         List<DataGroupFilling> after = app.group().list();
         Assert.assertEquals(before.size(), after.size());
@@ -50,7 +51,8 @@ public class GroupTestModify extends TestBase {
 
         List<DataGroupFilling> before = app.group().list();
         int indexOfGroup = before.size() - 1;
-        DataGroupFilling group = new DataGroupFilling(before.get(indexOfGroup).getId(), "test1", "test2", "test3");
+        DataGroupFilling group = new DataGroupFilling().
+                withId(before.get(indexOfGroup).getId()).withGroupName("test1").withGroupHeader("test2").withGroupFooter("test3");
         app.group().modify(indexOfGroup, group);
         List<DataGroupFilling> after = app.group().list();
         Assert.assertEquals(before.size(), after.size());

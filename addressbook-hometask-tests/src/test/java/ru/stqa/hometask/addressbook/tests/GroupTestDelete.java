@@ -13,7 +13,7 @@ public class GroupTestDelete extends TestBase {
   public void ensurePreconditions() {
     app.goTo().GroupPage();
     if (app.group().list().size() == 0) {
-      app.group().create(new DataGroupFilling("t1", "t2", "t3"));
+      app.group().create(new DataGroupFilling().withGroupName("t1").withGroupHeader("t2").withGroupFooter("t3"));
     }
   }
 
