@@ -6,6 +6,25 @@ public class DataGroupFilling {
   private String groupHeader;
   private String groupFooter;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    DataGroupFilling that = (DataGroupFilling) o;
+
+    if (id != that.id) return false;
+    return groupName != null ? groupName.equals(that.groupName) : that.groupName == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (groupName != null ? groupName.hashCode() : 0);
+    return result;
+  }
+
   public String getGroupName() {
     return groupName;
   }
@@ -41,26 +60,6 @@ public class DataGroupFilling {
     this.groupFooter = groupFooter;
     return this;
   }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    DataGroupFilling that = (DataGroupFilling) o;
-
-    if (id != that.id) return false;
-    return groupName != null ? groupName.equals(that.groupName) : that.groupName == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (groupName != null ? groupName.hashCode() : 0);
-    return result;
-  }
-
 
 
   @Override

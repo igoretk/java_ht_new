@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataGroupFilling;
 
 import java.util.List;
+import java.util.Set;
 
 public class GroupTestDelete extends TestBase {
 
@@ -29,6 +30,17 @@ public class GroupTestDelete extends TestBase {
     Assert.assertEquals(before, after);
 
   }
+  @Test
+  public void testGroupDeleteWithUniqueId() {
+    Set<DataGroupFilling> before = app.group().all();
+    DataGroupFilling deletedGroup = before.iterator().next();
+    app.group().delete(deletedGroup);
+    Set<DataGroupFilling> after = app.group().all();
+    Assert.assertEquals(after.size(), before.size() - 1);
 
+    before.remove(deletedGroup);
+    Assert.assertEquals(before, after);
+
+  }
 
 }

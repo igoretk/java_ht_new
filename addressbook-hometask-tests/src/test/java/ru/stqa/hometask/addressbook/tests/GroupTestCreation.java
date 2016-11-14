@@ -6,6 +6,7 @@ import ru.stqa.hometask.addressbook.model.DataGroupFilling;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupTestCreation extends TestBase {
 
@@ -31,6 +32,20 @@ public class GroupTestCreation extends TestBase {
     group.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(group);
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+
+  }
+  @Test
+  public void testGroupCreationWithUniqueId() {
+    app.goTo().GroupPage();
+    Set<DataGroupFilling> before = app.group().all();
+    DataGroupFilling group = new DataGroupFilling().withGroupName("1").withGroupHeader("2").withGroupFooter("3");
+    app.group().create(group);
+    Set<DataGroupFilling> after = app.group().all();
+    Assert.assertEquals(after.size(), before.size() + 1);
+
+    group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
+    before.add(group);
+    Assert.assertEquals(before,after);
 
   }
 
