@@ -5,8 +5,8 @@ import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ContactTestCreation extends TestBase {
@@ -103,6 +103,20 @@ public class ContactTestCreation extends TestBase {
     Comparator<? super DataContactFilling> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
     before.sort(byId);
     after.sort(byId);
+    Assert.assertEquals(before, after);
+  }
+
+  @Test
+  public void testContactCreationWithUniqueId() {
+    app.goTo().ContactPage();
+    Set<DataContactFilling> before = app.contact().all();
+    DataContactFilling dataContactFilling = new DataContactFilling().withFirstName("FirstName").withLastName("LastName");
+    app.contact().create(dataContactFilling);
+    Set<DataContactFilling> after = app.contact().all();
+    Assert.assertEquals(after.size(), before.size() + 1);
+
+    dataContactFilling.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
+    before.add(dataContactFilling);
     Assert.assertEquals(before, after);
   }
 }

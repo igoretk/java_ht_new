@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
 import java.util.List;
+import java.util.Set;
 
 public class ContactTestDelete extends TestBase {
 
@@ -52,6 +53,18 @@ public class ContactTestDelete extends TestBase {
         Assert.assertEquals(after.size(), before.size() - 1);
 
         before.remove(index );
+        Assert.assertEquals(before, after);
+    }
+    @Test
+    public void testContactDeleteWithUniqueId() {
+
+        Set<DataContactFilling> before = app.contact().all();
+        DataContactFilling deletedContact = before.iterator().next();
+        app.contact().delete(deletedContact);
+        Set<DataContactFilling> after = app.contact().all();
+        Assert.assertEquals(after.size(), before.size() - 1);
+
+        before.remove(deletedContact);
         Assert.assertEquals(before, after);
     }
 }

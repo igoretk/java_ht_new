@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ContactHelper extends HelperBase {
@@ -48,6 +50,9 @@ public class ContactHelper extends HelperBase {
   public void select(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
 
   public void clickToEdit() {
     click(By.xpath(".//*[@id='maintable']//*[@alt ='Edit']"));
@@ -76,8 +81,22 @@ public class ContactHelper extends HelperBase {
     submit();
     goToHomePage();
   }
+
+  public void modify(DataContactFilling contact) {
+    selectContactById(contact.getId());
+    clickToEdit();
+    fill(contact);
+    submit();
+    goToHomePage();
+  }
+
   public void delete(int index) {
     select(index);
+    deleteContact();
+    goToHomePage();
+  }
+  public void delete(DataContactFilling contact) {
+    selectContactById(contact.getId());
     deleteContact();
     goToHomePage();
   }
@@ -97,7 +116,6 @@ public class ContactHelper extends HelperBase {
   public List<DataContactFilling> list() {
     List<DataContactFilling> contacts = new ArrayList<DataContactFilling>();
     List<WebElement> elements = wd.findElements(By.xpath(".//*[@name='entry']"));
-
     for (WebElement element : elements) {
       String firstName = element.findElement(By.xpath(".//td[3]")).getText();
       String lastName = element.findElement(By.xpath(".//td[2]")).getText();
@@ -106,4 +124,17 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+  public Set<DataContactFilling> all() {
+    Set<DataContactFilling> contacts = new HashSet<>();
+    List<WebElement> elements = wd.findElements(By.xpath(".//*[@name='entry']"));
+    for (WebElement element : elements) {
+      String firstName = element.findElement(By.xpath(".//td[3]")).getText();
+      String lastName = element.findElement(By.xpath(".//td[2]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new DataContactFilling().withId(id).withFirstName(firstName).withLastName(lastName));
+    }
+    return contacts;
+  }
+
+
 }
