@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class ContactTestCreation extends TestBase {
-
+  /*
   @Test
   public void testContactCreation() throws InterruptedException {
     app.goTo().ContactPage();
@@ -71,6 +71,7 @@ public class ContactTestCreation extends TestBase {
     Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before));
   }
 
+
   @Test
   public void testContactCreationWithCollectionSort() {
     app.goTo().ContactPage();
@@ -87,5 +88,21 @@ public class ContactTestCreation extends TestBase {
     after.sort(byId);
     Assert.assertEquals(before, after);
   }
+  */
+  @Test
+  public void testContactCreationWithFluent() {
+    app.goTo().ContactPage();
+    List<DataContactFilling> before = app.contact().list();
+    DataContactFilling dataContactFilling = new DataContactFilling().withFirstName("FirstName").withLastName("LastName");
+    app.contact().create(dataContactFilling);
+    List<DataContactFilling> after = app.contact().list();
+    Assert.assertEquals(after.size(), before.size() + 1);
 
+    dataContactFilling.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+    before.add(dataContactFilling);
+    Comparator<? super DataContactFilling> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
+  }
 }

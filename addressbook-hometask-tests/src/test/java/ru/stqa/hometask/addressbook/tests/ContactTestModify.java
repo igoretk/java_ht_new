@@ -11,18 +11,14 @@ import java.util.List;
 
 public class ContactTestModify extends TestBase {
 
-  @BeforeMethod
-  public void ensurePreconditions() {
-    app.goTo().ContactPage();
-    if (app.contact().list().size() == 0) {
-      app.contact().
-              create(new DataContactFilling("1", "middle name field", "last name field", "nickName",
-                      "title field", "company field", "address field",
-                      "123121", "21321321", "321321321", "32112",
-                      "secondary address bla bla bla", "additional info I love cats"));
+    @BeforeMethod
+    public void ensurePreconditions() {
+        app.goTo().ContactPage();
+        if (app.contact().list().size() == 0) {
+            app.contact().create(new DataContactFilling().withFirstName("FirstName").withLastName("LastName"));
+        }
     }
-  }
-
+/*
   @Test
   public void testContactModify() {
 
@@ -58,21 +54,22 @@ public class ContactTestModify extends TestBase {
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 
+*/
 
+    @Test
+    public void testContactModifyWithFluent() {
 
-  @Test
-  public void testContactModifyWithHashSetWithSort() {
+        List<DataContactFilling> before = app.contact().list();
+        int index = before.size() - 1;
+        DataContactFilling contact = new DataContactFilling()
+                .withId(before.get(before.size() - 1).getId()).withFirstName("FirstName").withLastName("LastName");
+        app.contact().modify(index, contact);
+        List<DataContactFilling> after = app.contact().list();
+        Assert.assertEquals(after.size(), before.size());
 
-    List<DataContactFilling> before = app.contact().list();
-    int index = before.size() - 1;
-    DataContactFilling contact = new DataContactFilling(before.get(before.size() - 1).getId(), "1", "2", "3", "4", null, null, null, null, null, null, null, null, null);
-    app.contact().modify(index, contact);
-    List<DataContactFilling> after = app.contact().list();
-    Assert.assertEquals(after.size(), before.size());
-
-    Comparator<? super DataContactFilling> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
-    Assert.assertEquals(before, after);
-  }
+        Comparator<? super DataContactFilling> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+        before.sort(byId);
+        after.sort(byId);
+        Assert.assertEquals(before, after);
+    }
 }

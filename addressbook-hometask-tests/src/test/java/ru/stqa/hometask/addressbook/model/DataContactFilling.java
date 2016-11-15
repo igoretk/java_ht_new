@@ -1,20 +1,20 @@
 package ru.stqa.hometask.addressbook.model;
 
 public class DataContactFilling {
-  private int id;
-  private final String firstName;
-  private final String middleName;
-  private final String lastName;
-  private final String nickName;
-  private final String title;
-  private final String company;
-  private final String address;
-  private final String homePhone;
-  private final String mobilePhone;
-  private final String workPhone;
-  private final String fax;
-  private final String secondaryAddress;
-  private final String notes;
+  private int id=Integer.MAX_VALUE;;
+  private String firstName;
+  private String middleName;
+  private String lastName;
+  private String nickName;
+  private String title;
+  private String company;
+  private String address;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
+  private String fax;
+  private String secondaryAddress;
+  private String notes;
 
 
   @Override
@@ -31,40 +31,6 @@ public class DataContactFilling {
   @Override
   public int hashCode() {
     return firstName != null ? firstName.hashCode() : 0;
-  }
-
-  public DataContactFilling(String firstName, String middleName, String lastName, String nickName, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String secondaryAddress, String notes) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickName = nickName;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.homePhone = homePhone;
-    this.mobilePhone = mobilePhone;
-    this.workPhone = workPhone;
-    this.fax = fax;
-    this.secondaryAddress = secondaryAddress;
-    this.notes = notes;
-  }
-
-  public DataContactFilling(int id, String firstName, String middleName, String lastName, String nickName, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String fax, String secondaryAddress, String notes) {
-    this.id = id;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickName = nickName;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.homePhone = homePhone;
-    this.mobilePhone = mobilePhone;
-    this.workPhone = workPhone;
-    this.fax = fax;
-    this.secondaryAddress = secondaryAddress;
-    this.notes = notes;
   }
 
   @Override
@@ -134,8 +100,18 @@ public class DataContactFilling {
     return notes;
   }
 
-  public void setId(int id) {
+  public DataContactFilling withId(int id) {
     this.id = id;
+    return this;
   }
 
+  public DataContactFilling withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public DataContactFilling withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
 }
