@@ -3,6 +3,7 @@ package ru.stqa.hometask.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import ru.stqa.hometask.addressbook.model.Contacts;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
 import java.util.ArrayList;
@@ -124,8 +125,8 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
-  public Set<DataContactFilling> all() {
-    Set<DataContactFilling> contacts = new HashSet<>();
+  public Contacts all() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.xpath(".//*[@name='entry']"));
     for (WebElement element : elements) {
       String firstName = element.findElement(By.xpath(".//td[3]")).getText();

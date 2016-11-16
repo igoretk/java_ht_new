@@ -1,12 +1,16 @@
 package ru.stqa.hometask.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.stqa.hometask.addressbook.model.Contacts;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
 import java.util.List;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactTestDelete extends TestBase {
 
@@ -50,10 +54,10 @@ public class ContactTestDelete extends TestBase {
         int index = before.size() - 1;
         app.contact().delete(index);
         List<DataContactFilling> after = app.contact().list();
-        Assert.assertEquals(after.size(), before.size() - 1);
+        assertEquals(after.size(), before.size() - 1);
 
         before.remove(index );
-        Assert.assertEquals(before, after);
+        assertEquals(before, after);
     }
     @Test
     public void testContactDeleteWithUniqueId() {
@@ -62,10 +66,21 @@ public class ContactTestDelete extends TestBase {
         DataContactFilling deletedContact = before.iterator().next();
         app.contact().delete(deletedContact);
         Set<DataContactFilling> after = app.contact().all();
-        Assert.assertEquals(after.size(), before.size() - 1);
+        assertEquals(after.size(), before.size() - 1);
 
         before.remove(deletedContact);
-        Assert.assertEquals(before, after);
+        assertEquals(before, after);
+    }
+    @Test
+    public void testContactDeleteWithUniqueIdAndHam() {
+
+        Contacts before = app.contact().all();
+        DataContactFilling deletedContact = before.iterator().next();
+        app.contact().delete(deletedContact);
+        Contacts after = app.contact().all();
+        assertEquals(after.size(), before.size() - 1);
+
+        assertThat(after, equalTo(before.withOut(deletedContact)));
     }
 }
 
