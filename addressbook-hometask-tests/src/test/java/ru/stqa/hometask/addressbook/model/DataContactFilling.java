@@ -13,6 +13,7 @@ public class DataContactFilling {
   private String email3;
   private String allPhones;
   private String allEmails;
+  private String names;
 
   public int getId() {
     return id;
@@ -96,6 +97,9 @@ public class DataContactFilling {
   public String getAllEmails() {
     return allEmails;
   }
+  public String getNames() {
+    return names;
+  }
   public DataContactFilling withAllEmails(String allEmails) {
     this.allEmails = allEmails;
     return this;
@@ -118,6 +122,11 @@ public class DataContactFilling {
 
   public DataContactFilling withEmail3(String email3) {
     this.email3 = email3;
+    return this;
+  }
+
+  public DataContactFilling withNames(String names) {
+    this.names = names;
     return this;
   }
 
@@ -150,5 +159,6 @@ public class DataContactFilling {
             ", lastName='" + lastName + '\'' +
             '}';
   }
+
 
 }

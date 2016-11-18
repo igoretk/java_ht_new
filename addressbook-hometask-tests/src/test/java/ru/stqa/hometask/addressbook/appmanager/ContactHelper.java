@@ -199,6 +199,29 @@ public class ContactHelper extends HelperBase {
             .withEmail1(email1).withEmail2(email2).withEmail3(email3);
   }
 
+  public DataContactFilling infoFromDetails(DataContactFilling contact) {
+    initContactDetailedById(contact.getId());
+
+    String names = wd.findElement(By.tagName("b")).getText();
+    String adr = wd.findElement(By.xpath(".//*[@id='content']//br[1]")).getText();
+    String homePh = wd.findElement(By.xpath(".//*[@id='content']//br[2]")).getText();
+    String mobPh = wd.findElement(By.xpath(".//*[@id='content']//br[3]")).getText();
+    String workPh = wd.findElement(By.xpath(".//*[@id='content']//br[4]")).getText();
+    String email1 = wd.findElement(By.xpath(".//*[@id='content']/a[1]")).getText();
+    String email2 = wd.findElement(By.xpath(".//*[@id='content']/a[2]")).getText();
+    String email3 = wd.findElement(By.xpath(".//*[@id='content']/a[3]")).getText();
+
+    return new DataContactFilling().withId(contact.getId()).withNames(names)
+            .withHomePhone(homePh).withMobilePhone(mobPh).withWorkPhone(workPh)
+            .withAddress(adr)
+            .withEmail1(email1).withEmail2(email2).withEmail3(email3);
+  }
+
+  public void initContactDetailedById(int id) {
+    wd.findElement(By.xpath(String.format(".//a[@href='view.php?id=%s']", id))).click();
+
+  }
+
   public void initContactModificationById(int id) {
     wd.findElement(By.xpath(String.format(".//a[@href='edit.php?id=%s']", id))).click();
 
