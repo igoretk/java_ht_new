@@ -9,9 +9,9 @@ public class DataContactFilling {
   private String title;
   private String company;
   private String address;
-  private String homePhone;
-  private String mobilePhone;
-  private String workPhone;
+  private String home;
+  private String mobile;
+  private String work;
   private String fax;
   private String secondaryAddress;
   private String notes;
@@ -82,15 +82,15 @@ public class DataContactFilling {
   }
 
   public String getHomePhone() {
-    return homePhone;
+    return home;
   }
 
   public String getMobilePhone() {
-    return mobilePhone;
+    return mobile;
   }
 
   public String getWorkPhone() {
-    return workPhone;
+    return work;
   }
 
   public String getFax() {
@@ -117,6 +117,21 @@ public class DataContactFilling {
 
   public DataContactFilling withLastName(String lastName) {
     this.lastName = lastName;
+    return this;
+  }
+
+  public DataContactFilling withHomePhone(String home) {
+    this.home = home;
+    return this;
+  }
+
+  public DataContactFilling withMobilePhone(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
+
+  public DataContactFilling withWorkPhone(String work) {
+    this.work = work;
     return this;
   }
 }
