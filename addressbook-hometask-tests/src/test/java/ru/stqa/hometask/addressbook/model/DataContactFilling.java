@@ -1,7 +1,8 @@
 package ru.stqa.hometask.addressbook.model;
 
 public class DataContactFilling {
-  private int id=Integer.MAX_VALUE;;
+  private int id = Integer.MAX_VALUE;
+  ;
   private String firstName;
   private String middleName;
   private String lastName;
@@ -15,6 +16,7 @@ public class DataContactFilling {
   private String fax;
   private String secondaryAddress;
   private String notes;
+  private String allPhones;
 
 
   @Override
@@ -134,4 +136,14 @@ public class DataContactFilling {
     this.work = work;
     return this;
   }
+
+  public DataContactFilling withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
 }

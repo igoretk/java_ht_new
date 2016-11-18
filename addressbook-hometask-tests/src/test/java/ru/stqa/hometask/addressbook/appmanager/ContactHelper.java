@@ -154,6 +154,20 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+  public Set<DataContactFilling> allForPhonesForReverseCheck() {
+    Set<DataContactFilling> contacts = new HashSet<>();
+    List<WebElement> rows = wd.findElements(By.xpath(".//*[@name='entry']"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String lastName = cells.get(1).getText();
+      String firstName = cells.get(2).getText();
+      String allPhones = cells.get(5).getText();
+      contacts.add(new DataContactFilling().withId(id).withFirstName(firstName).withLastName(lastName)
+              .withAllPhones(allPhones));
+    }
+    return contacts;
+  }
 
   public DataContactFilling infoFromEditForm(DataContactFilling contact) {
     initContactModificationById(contact.getId());
