@@ -2,81 +2,28 @@ package ru.stqa.hometask.addressbook.model;
 
 public class DataContactFilling {
   private int id = Integer.MAX_VALUE;
-  ;
   private String firstName;
-  private String middleName;
   private String lastName;
-  private String nickName;
-  private String title;
-  private String company;
   private String address;
   private String home;
   private String mobile;
   private String work;
-  private String fax;
-  private String secondaryAddress;
-  private String notes;
+  private String email1;
+  private String email2;
+  private String email3;
   private String allPhones;
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    DataContactFilling that = (DataContactFilling) o;
-
-    if (id != that.id) return false;
-    if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-    return result;
-  }
-
-  @Override
-  public String toString() {
-    return "DataContactFilling{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", middleName='" + middleName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            '}';
-  }
+  private String allEmails;
 
   public int getId() {
     return id;
   }
 
-
   public String getFirstName() {
     return firstName;
   }
 
-  public String getMiddleName() {
-    return middleName;
-  }
-
   public String getLastName() {
     return lastName;
-  }
-
-  public String getNickName() {
-    return nickName;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public String getCompany() {
-    return company;
   }
 
   public String getAddress() {
@@ -95,16 +42,16 @@ public class DataContactFilling {
     return work;
   }
 
-  public String getFax() {
-    return fax;
+  public String getEmail1() {
+    return email1;
   }
 
-  public String getSecondaryAddress() {
-    return secondaryAddress;
+  public String getEmail2() {
+    return email2;
   }
 
-  public String getNotes() {
-    return notes;
+  public String getEmail3() {
+    return email3;
   }
 
   public DataContactFilling withId(int id) {
@@ -144,6 +91,64 @@ public class DataContactFilling {
 
   public String getAllPhones() {
     return allPhones;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+  public DataContactFilling withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  public DataContactFilling withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public DataContactFilling withEmail1(String email1) {
+    this.email1 = email1;
+    return this;
+  }
+
+  public DataContactFilling withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public DataContactFilling withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    DataContactFilling that = (DataContactFilling) o;
+
+    if (id != that.id) return false;
+    if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    return "DataContactFilling{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
   }
 
 }
