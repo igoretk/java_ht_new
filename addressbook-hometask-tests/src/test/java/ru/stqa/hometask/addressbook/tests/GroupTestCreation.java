@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.DataGroupFilling;
 import ru.stqa.hometask.addressbook.model.Groups;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -55,17 +56,43 @@ public class GroupTestCreation extends TestBase {
 
   }
 
-  @DataProvider()
+  @DataProvider
   public Iterator<Object[]> validGroups() {
     List<Object[]> list = new ArrayList<>();
-    list.add(new Object[] {new DataGroupFilling().withGroupName("t1").withGroupHeader("h1").withGroupFooter("f1")});
-    list.add(new Object[] {new DataGroupFilling().withGroupName("t2").withGroupHeader("h2").withGroupFooter("f3")});
-    list.add(new Object[] {new DataGroupFilling().withGroupName("t3").withGroupHeader("h2").withGroupFooter("f3")});
+    list.add(new Object[]{new DataGroupFilling().withGroupName("t1").withGroupHeader("h1").withGroupFooter("f1")});
+    list.add(new Object[]{new DataGroupFilling().withGroupName("t2").withGroupHeader("h2").withGroupFooter("f3")});
+    list.add(new Object[]{new DataGroupFilling().withGroupName("t3").withGroupHeader("h2").withGroupFooter("f3")});
     return list.iterator();
   }
 
   @Test(dataProvider = "validGroups")
   public void testGroupCreationWithDataProvider(DataGroupFilling group) {
+    app.goTo().GroupPage();
+    Groups before = app.group().all();
+    app.group().create(group);
+    Groups after = app.group().all();
+    assertThat(after.size(), equalTo(before.size() + 1));
+
+    assertThat(after, equalTo(
+            before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+
+  }
+
+  @DataProvider
+  public Iterator<Object[]> validGroupsFromFile() throws IOException {
+    List<Object[]> list = new ArrayList<Object[]>();
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.csv")));
+    String line = reader.readLine();
+    while (line != null) {
+      String[] split = line.split(";");
+      list.add(new Object[]{new DataGroupFilling().withGroupName(split[0]).withGroupHeader(split[1]).withGroupFooter(split[2])});
+      line = reader.readLine();
+    }
+    return list.iterator();
+  }
+
+  @Test(dataProvider = "validGroupsFromFile")
+  public void testGroupCreationWithDataProviderFromFile(DataGroupFilling group) {
     app.goTo().GroupPage();
     Groups before = app.group().all();
     app.group().create(group);
