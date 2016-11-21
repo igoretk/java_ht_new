@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.Contacts;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
+import java.io.File;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
@@ -123,6 +124,7 @@ public class ContactTestCreation extends TestBase {
     before.add(dataContactFilling);
     assertEquals(before, after);
   }
+
   @Test
   public void testContactCreationWithUniqueIdAndHam() {
     app.goTo().ContactPage();
@@ -133,6 +135,26 @@ public class ContactTestCreation extends TestBase {
     assertThat(after.size(), equalTo(before.size() + 1));
 
     assertThat(after, equalTo(
-            before.withAdded( dataContactFilling.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+            before.withAdded(dataContactFilling.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+  }
+
+  @Test
+  public void testContactCreationFiles() {
+    app.goTo().ContactPage();
+    app.contact().initNewContactCreation();
+    File photo = new File("src/test/resources/photo.jpg");
+    app.contact().fill(new DataContactFilling().withFirstName("test_name").withLastName("test_surname").withPhoto(photo));
+    app.contact().submitNewContactCreation();
+    app.contact().goToHomePage();
+  }
+
+  @Test
+  public void testCurrentDir() {
+    File currentDir = new File(".");
+    System.out.println(currentDir.getAbsolutePath());
+    File photo = new File("src/test/resources/photo.jpg");
+    System.out.println(photo.getAbsolutePath());
+    System.out.println(photo.exists());
+
   }
 }

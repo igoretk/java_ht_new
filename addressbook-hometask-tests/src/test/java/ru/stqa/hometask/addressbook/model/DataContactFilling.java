@@ -1,5 +1,7 @@
 package ru.stqa.hometask.addressbook.model;
 
+import java.io.File;
+
 public class DataContactFilling {
   private int id = Integer.MAX_VALUE;
   private String firstName;
@@ -14,6 +16,16 @@ public class DataContactFilling {
   private String allPhones;
   private String allEmails;
   private String names;
+  private File photo;
+
+  public File getPhoto() {
+    return photo;
+  }
+
+  public DataContactFilling withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
 
   public int getId() {
     return id;
