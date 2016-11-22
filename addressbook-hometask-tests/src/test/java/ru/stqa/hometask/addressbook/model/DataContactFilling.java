@@ -1,11 +1,23 @@
 package ru.stqa.hometask.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.File;
 
+@XStreamAlias("contact")
+
 public class DataContactFilling {
+
+  @XStreamOmitField
+
   private int id = Integer.MAX_VALUE;
+  @Expose
   private String firstName;
+  @Expose
   private String lastName;
+  @Expose
   private String address;
   private String home;
   private String mobile;

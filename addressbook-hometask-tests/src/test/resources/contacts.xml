@@ -1,0 +1,27 @@
+<list>
+  <contact>
+    <firstName>testName 0</firstName>
+    <lastName>testLastName 0</lastName>
+    <address>testAddress 0</address>
+  </contact>
+  <contact>
+    <firstName>testName 1</firstName>
+    <lastName>testLastName 1</lastName>
+    <address>testAddress 1</address>
+  </contact>
+  <contact>
+    <firstName>testName 2</firstName>
+    <lastName>testLastName 2</lastName>
+    <address>testAddress 2</address>
+  </contact>
+  <contact>
+    <firstName>testName 3</firstName>
+    <lastName>testLastName 3</lastName>
+    <address>testAddress 3</address>
+  </contact>
+  <contact>
+    <firstName>testName 4</firstName>
+    <lastName>testLastName 4</lastName>
+    <address>testAddress 4</address>
+  </contact>
+</list>
