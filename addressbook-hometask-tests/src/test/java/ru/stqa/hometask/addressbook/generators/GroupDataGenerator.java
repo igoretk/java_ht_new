@@ -41,7 +41,7 @@ public class GroupDataGenerator {
     List<DataGroupFilling> groups = generateGroups(count);
     if (format.equals("csv")) {
       saveAsCsv(groups, new File(file));
-    } else if (format.equals("xml")){
+    } else if (format.equals("xml")) {
       saveAsXml(groups, new File(file));
     } else {
       System.out.println("unrecognized format: " + format);
@@ -52,18 +52,18 @@ public class GroupDataGenerator {
     XStream xstream = new XStream();
     xstream.processAnnotations(DataGroupFilling.class);
     String xml = xstream.toXML(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(xml);
+    }
   }
 
   private void saveAsCsv(List<DataGroupFilling> groups, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer = new FileWriter(file);
-    for (DataGroupFilling group : groups) {
-      writer.write(String.format("%s;%s;%s\n", group.getGroupName(), group.getGroupHeader(), group.getGroupFooter()));
+    try (Writer writer = new FileWriter(file)) {
+      for (DataGroupFilling group : groups) {
+        writer.write(String.format("%s;%s;%s\n", group.getGroupName(), group.getGroupHeader(), group.getGroupFooter()));
+      }
     }
-    writer.close();
   }
 
   private List<DataGroupFilling> generateGroups(int count) {
