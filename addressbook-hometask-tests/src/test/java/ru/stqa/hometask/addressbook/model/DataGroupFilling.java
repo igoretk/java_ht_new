@@ -1,6 +1,11 @@
 package ru.stqa.hometask.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("group")
 public class DataGroupFilling {
+  @XStreamOmitField
   private int id = 0;
   private String groupName;
   private String groupHeader;
