@@ -55,11 +55,10 @@ public class DataContactFilling {
   @Transient
   private String names;
 
-  @Column(name = "photo")
-  @Type(type = "text")
+  @Transient
   private String photo;
 
-  public File getPhoto() {
+ /* public File getPhoto() {
     return new File(photo);
   }
 
@@ -67,7 +66,7 @@ public class DataContactFilling {
     this.photo = photo.getPath();
     return this;
   }
-
+*/
   public int getId() {
     return id;
   }

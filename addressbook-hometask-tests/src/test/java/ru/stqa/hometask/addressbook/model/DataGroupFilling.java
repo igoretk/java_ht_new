@@ -29,25 +29,6 @@ public class DataGroupFilling {
   @Type(type = "text")
   private String groupFooter;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    DataGroupFilling that = (DataGroupFilling) o;
-
-    if (id != that.id) return false;
-    return groupName != null ? groupName.equals(that.groupName) : that.groupName == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (groupName != null ? groupName.hashCode() : 0);
-    return result;
-  }
-
   public String getGroupName() {
     return groupName;
   }
@@ -93,4 +74,26 @@ public class DataGroupFilling {
             '}';
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    DataGroupFilling that = (DataGroupFilling) o;
+
+    if (id != that.id) return false;
+    if (groupName != null ? !groupName.equals(that.groupName) : that.groupName != null) return false;
+    if (groupHeader != null ? !groupHeader.equals(that.groupHeader) : that.groupHeader != null) return false;
+    return groupFooter != null ? groupFooter.equals(that.groupFooter) : that.groupFooter == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (groupName != null ? groupName.hashCode() : 0);
+    result = 31 * result + (groupHeader != null ? groupHeader.hashCode() : 0);
+    result = 31 * result + (groupFooter != null ? groupFooter.hashCode() : 0);
+    return result;
+  }
 }

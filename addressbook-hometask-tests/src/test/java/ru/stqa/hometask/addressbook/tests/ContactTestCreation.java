@@ -149,7 +149,7 @@ public class ContactTestCreation extends TestBase {
             before.withAdded(dataContactFilling.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 
-  @Test
+ /* @Test
   public void testContactCreationFiles() {
     app.goTo().ContactPage();
     app.contact().initNewContactCreation();
@@ -157,7 +157,7 @@ public class ContactTestCreation extends TestBase {
     app.contact().fill(new DataContactFilling().withFirstName("test_name").withLastName("test_surname").withPhoto(photo));
     app.contact().submitNewContactCreation();
     app.contact().goToHomePage();
-  }
+  } */
 
   @Test
   public void testCurrentDir() {
