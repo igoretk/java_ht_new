@@ -33,6 +33,23 @@ public class GroupTestModifyDb extends TestBase {
     assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
   }
 
+  @Test
+  public void testGroupModifyDbAndUi() {
+
+    Groups before = app.db().groups();
+    DataGroupFilling modifiedGroup = before.iterator().next();
+    DataGroupFilling group = new DataGroupFilling().
+            withId(modifiedGroup.getId()).withGroupName("test1").withGroupHeader("test2").withGroupFooter("test3");
+    app.goTo().GroupPage();
+    app.group().modify(group);
+    Groups after = app.db().groups();
+    assertEquals(before.size(), after.size());
+    assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
+    verifyGroupListInUI();
+  }
+
+
+
 }
 
 

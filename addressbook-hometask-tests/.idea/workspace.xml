@@ -56,13 +56,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupTestModifyDb.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GroupTestModifyDb.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestModifyDb.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="28" column="22" selection-start-line="28" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="140">
+              <caret line="36" column="36" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestBase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/TestBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="36" column="64" selection-start-line="36" selection-start-column="64" selection-end-line="37" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#862#863#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,7 +94,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContactTestDeleteDb.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ContactTestDeleteDb.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/ContactTestDeleteDb.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
@@ -95,8 +109,8 @@
       <file leaf-file-name="ContactTestDelete.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/ContactTestDelete.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="83" selection-end-column="5" />
+            <state relative-caret-position="157">
+              <caret line="68" column="54" selection-start-line="68" selection-start-column="54" selection-end-line="68" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -519,7 +533,6 @@
         <option value="$PROJECT_DIR$/src/test/resources/testng.xml" />
         <option value="$PROJECT_DIR$/src/test/resources/testng-contacts.xml" />
         <option value="$PROJECT_DIR$/src/test/resources/testng-groups.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/TestBase.java" />
         <option value="$PROJECT_DIR$/src/test/resources/local.properties" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/DbConnectionTest.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
@@ -528,7 +541,6 @@
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestModify.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/appmanager/ApplicationManager.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/model/Groups.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestModifyDb.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/model/DataGroupFilling.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/appmanager/DbHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/model/Contacts.java" />
@@ -542,6 +554,8 @@
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestDelete.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestDeletionDb.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/ContactTestDeleteDb.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestModifyDb.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/TestBase.java" />
       </list>
     </option>
   </component>
@@ -780,73 +794,7 @@
       <recent name="ru.stqa.hometask.addressbook.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.ContactTestDeleteDb.testContactDeleteDb">
-    <configuration default="false" name="GroupTestCreationDb.testGroupCreationDb" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="ru.stqa.hometask.addressbook.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="addressbook-hometask-tests_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" value="ru.stqa.hometask.addressbook.tests" />
-      <option name="MAIN_CLASS_NAME" value="ru.stqa.hometask.addressbook.tests.GroupTestCreationDb" />
-      <option name="METHOD_NAME" value="testGroupCreationDb" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="false" name="ContactTestCreationDb.testContactCreationDb" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="ru.stqa.hometask.addressbook.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="addressbook-hometask-tests_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" value="ru.stqa.hometask.addressbook.tests" />
-      <option name="MAIN_CLASS_NAME" value="ru.stqa.hometask.addressbook.tests.ContactTestCreationDb" />
-      <option name="METHOD_NAME" value="testContactCreationDb" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="TestNG.GroupTestModifyDb.testGroupModifyDbAndUi">
     <configuration default="false" name="GroupTestDeletionDb.testGroupDeleteDb" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -941,6 +889,72 @@
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="ContactTestDelete.testContactDeleteWithUniqueIdAndHam" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ru.stqa.hometask.addressbook.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="addressbook-hometask-tests_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="ru.stqa.hometask.addressbook.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.stqa.hometask.addressbook.tests.ContactTestDelete" />
+      <option name="METHOD_NAME" value="testContactDeleteWithUniqueIdAndHam" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="GroupTestModifyDb.testGroupModifyDbAndUi" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ru.stqa.hometask.addressbook.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="addressbook-hometask-tests_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="ru.stqa.hometask.addressbook.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.stqa.hometask.addressbook.tests.GroupTestModifyDb" />
+      <option name="METHOD_NAME" value="testGroupModifyDbAndUi" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea -DverifyUI=true" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" value="" />
       <envs />
       <properties />
       <listeners />
@@ -1200,19 +1214,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="TestNG.GroupTestCreationDb.testGroupCreationDb" />
-      <item index="1" class="java.lang.String" itemvalue="TestNG.ContactTestCreationDb.testContactCreationDb" />
-      <item index="2" class="java.lang.String" itemvalue="TestNG.GroupTestDeletionDb.testGroupDeleteDb" />
-      <item index="3" class="java.lang.String" itemvalue="TestNG.GroupTestDelete.testGroupDeleteWithUniqueIdAndHam" />
-      <item index="4" class="java.lang.String" itemvalue="TestNG.ContactTestDeleteDb.testContactDeleteDb" />
+      <item index="0" class="java.lang.String" itemvalue="TestNG.GroupTestDeletionDb.testGroupDeleteDb" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.GroupTestDelete.testGroupDeleteWithUniqueIdAndHam" />
+      <item index="2" class="java.lang.String" itemvalue="TestNG.ContactTestDeleteDb.testContactDeleteDb" />
+      <item index="3" class="java.lang.String" itemvalue="TestNG.ContactTestDelete.testContactDeleteWithUniqueIdAndHam" />
+      <item index="4" class="java.lang.String" itemvalue="TestNG.GroupTestModifyDb.testGroupModifyDbAndUi" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="TestNG.ContactTestDeleteDb.testContactDeleteDb" />
-        <item index="1" class="java.lang.String" itemvalue="TestNG.GroupTestDeletionDb.testGroupDeleteDb" />
-        <item index="2" class="java.lang.String" itemvalue="TestNG.GroupTestDelete.testGroupDeleteWithUniqueIdAndHam" />
-        <item index="3" class="java.lang.String" itemvalue="TestNG.ContactTestCreationDb.testContactCreationDb" />
-        <item index="4" class="java.lang.String" itemvalue="TestNG.GroupTestCreationDb.testGroupCreationDb" />
+        <item index="0" class="java.lang.String" itemvalue="TestNG.GroupTestModifyDb.testGroupModifyDbAndUi" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.ContactTestDelete.testContactDeleteWithUniqueIdAndHam" />
+        <item index="2" class="java.lang.String" itemvalue="TestNG.ContactTestDeleteDb.testContactDeleteDb" />
+        <item index="3" class="java.lang.String" itemvalue="TestNG.GroupTestDeletionDb.testGroupDeleteDb" />
+        <item index="4" class="java.lang.String" itemvalue="TestNG.GroupTestDelete.testGroupDeleteWithUniqueIdAndHam" />
       </list>
     </recent_temporary>
   </component>
@@ -1230,23 +1244,11 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ContactTestCreationDb_testContactCreationDb - 2016.12.01 at 17h 43m 55s.xml">
-      <configuration name="ContactTestCreationDb.testContactCreationDb" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="ContactTestDeleteDb_testContactDeleteDb - 2016.12.01 at 17h 58m 52s.xml">
       <configuration name="ContactTestDeleteDb.testContactDeleteDb" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactTestModifyDb_testContactModifyDb - 2016.12.01 at 17h 24m 30s.xml">
-      <configuration name="ContactTestModifyDb.testContactModifyDb" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactTestModifyDb_testContactModifyDb - 2016.12.01 at 17h 25m 06s.xml">
-      <configuration name="ContactTestModifyDb.testContactModifyDb" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="GroupTestCreationDb_testGroupCreationDb - 2016.12.01 at 17h 37m 03s.xml">
-      <configuration name="GroupTestCreationDb.testGroupCreationDb" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="GroupTestCreationDb_testGroupCreationDb - 2016.12.01 at 17h 38m 16s.xml">
-      <configuration name="GroupTestCreationDb.testGroupCreationDb" configurationId="TestNG" />
+    <history-entry file="ContactTestDelete_testContactDeleteWithUniqueIdAndHam - 2016.12.01 at 18h 49m 21s.xml">
+      <configuration name="ContactTestDelete.testContactDeleteWithUniqueIdAndHam" configurationId="TestNG" />
     </history-entry>
     <history-entry file="GroupTestDelete_testGroupDeleteWithUniqueIdAndHam - 2016.12.01 at 17h 51m 14s.xml">
       <configuration name="GroupTestDelete.testGroupDeleteWithUniqueIdAndHam" configurationId="TestNG" />
@@ -1259,6 +1261,18 @@
     </history-entry>
     <history-entry file="GroupTestDeletionDb_testGroupDeleteDb - 2016.12.01 at 17h 55m 09s.xml">
       <configuration name="GroupTestDeletionDb.testGroupDeleteDb" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GroupTestModifyDb_testGroupModifyDbAndUi - 2016.12.01 at 19h 06m 58s.xml">
+      <configuration name="GroupTestModifyDb.testGroupModifyDbAndUi" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GroupTestModifyDb_testGroupModifyDbAndUi - 2016.12.01 at 19h 13m 26s.xml">
+      <configuration name="GroupTestModifyDb.testGroupModifyDbAndUi" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GroupTestModifyDb_testGroupModifyDbAndUi - 2016.12.01 at 19h 14m 48s.xml">
+      <configuration name="GroupTestModifyDb.testGroupModifyDbAndUi" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GroupTestModifyDb_testGroupModifyDbAndUi - 2016.12.01 at 19h 15m 35s.xml">
+      <configuration name="GroupTestModifyDb.testGroupModifyDbAndUi" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -1462,13 +1476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/TestBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/ConractPageTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1508,17 +1515,17 @@
         <state relative-caret-position="204">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2107#2108#0" expanded="true" />
-            <element signature="e#2126#2127#0" expanded="true" />
-            <element signature="e#2158#2159#0" expanded="true" />
-            <element signature="e#2186#2187#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
-            <element signature="e#2252#2253#0" expanded="true" />
-            <element signature="e#2288#2289#0" expanded="true" />
-            <element signature="e#2321#2322#0" expanded="true" />
-            <element signature="e#2347#2348#0" expanded="true" />
-            <element signature="e#2372#2373#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2107#2108#0" expanded="false" />
+            <element signature="e#2126#2127#0" expanded="false" />
+            <element signature="e#2158#2159#0" expanded="false" />
+            <element signature="e#2186#2187#0" expanded="false" />
+            <element signature="e#2222#2223#0" expanded="false" />
+            <element signature="e#2252#2253#0" expanded="false" />
+            <element signature="e#2288#2289#0" expanded="false" />
+            <element signature="e#2321#2322#0" expanded="false" />
+            <element signature="e#2347#2348#0" expanded="false" />
+            <element signature="e#2372#2373#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1546,7 +1553,7 @@
         <state relative-caret-position="477">
           <caret line="58" column="20" selection-start-line="51" selection-start-column="4" selection-end-line="58" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1656,7 +1663,7 @@
         <state relative-caret-position="306">
           <caret line="36" column="35" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="35" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1688,16 +1695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestModifyDb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/ContactTestModifyDb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="89">
@@ -1718,18 +1715,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/ContactTestDelete.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="83" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/ContactTestDeleteDb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="20" column="33" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/ContactTestDelete.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="68" column="54" selection-start-line="68" selection-start-column="54" selection-end-line="68" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/TestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="36" column="64" selection-start-line="36" selection-start-column="64" selection-end-line="37" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/hometask/addressbook/tests/GroupTestModifyDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
