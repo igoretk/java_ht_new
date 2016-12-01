@@ -77,5 +77,4 @@ public class GroupTestModify extends TestBase {
         assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
     }
 
-
 }

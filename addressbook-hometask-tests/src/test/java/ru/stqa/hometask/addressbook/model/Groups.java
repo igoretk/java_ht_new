@@ -2,7 +2,9 @@ package ru.stqa.hometask.addressbook.model;
 
 import com.google.common.collect.ForwardingSet;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,7 +21,11 @@ public class Groups extends ForwardingSet<DataGroupFilling> {
         this.delegate = new HashSet<>();
     }
 
-    @Override
+  public Groups(Collection<DataGroupFilling> groups) {
+    this.delegate = new HashSet<>(groups);
+  }
+
+  @Override
     protected Set<DataGroupFilling> delegate() {
         return delegate;
     }
