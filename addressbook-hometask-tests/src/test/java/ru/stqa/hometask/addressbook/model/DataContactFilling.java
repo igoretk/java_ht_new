@@ -7,6 +7,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -55,18 +57,30 @@ public class DataContactFilling {
   @Transient
   private String names;
 
+
+  @ManyToMany
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<DataGroupFilling> groups = new HashSet<>();
+
+
   @Transient
   private String photo;
 
- /* public File getPhoto() {
-    return new File(photo);
+
+  /* public File getPhoto() {
+     return new File(photo);
+   }
+
+   public DataContactFilling withPhoto(File photo) {
+     this.photo = photo.getPath();
+     return this;
+   }
+ */
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
-  public DataContactFilling withPhoto(File photo) {
-    this.photo = photo.getPath();
-    return this;
-  }
-*/
   public int getId() {
     return id;
   }
@@ -149,9 +163,11 @@ public class DataContactFilling {
   public String getAllEmails() {
     return allEmails;
   }
+
   public String getNames() {
     return names;
   }
+
   public DataContactFilling withAllEmails(String allEmails) {
     this.allEmails = allEmails;
     return this;

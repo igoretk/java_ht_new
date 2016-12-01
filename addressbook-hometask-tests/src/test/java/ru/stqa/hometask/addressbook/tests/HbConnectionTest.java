@@ -41,6 +41,7 @@ public class HbConnectionTest {
     List<DataGroupFilling> result = session.createQuery("from DataGroupFilling").list();
     for (DataGroupFilling group : result) {
       System.out.println(group);
+      System.out.println("группа содержит контакты: \n" + group.getContacts());
     }
     session.getTransaction().commit();
     session.close();
@@ -54,6 +55,7 @@ public class HbConnectionTest {
     List<DataContactFilling> result = session.createQuery("from DataContactFilling where deprecated = '0000-00-00'").list();
     for (DataContactFilling contact : result) {
       System.out.println(contact);
+      System.out.println("контакт содержится в группах: \n" + contact.getGroups());
     }
     session.getTransaction().commit();
     session.close();
