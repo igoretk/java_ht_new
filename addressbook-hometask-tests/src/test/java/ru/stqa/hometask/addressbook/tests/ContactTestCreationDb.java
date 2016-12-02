@@ -49,15 +49,7 @@ public class ContactTestCreationDb extends TestBase {
 
   }
 
-  @BeforeMethod
-  public void ensurePreconditions() {
-    if (app.db().contacts().size() == 0 || app.group().list().size() == 0) {
-      app.goTo().ContactPage();
-      app.contact().create(new DataContactFilling().withFirstName("FirstName").withLastName("LastName"));
-      app.goTo().GroupPage();
-      app.group().create(new DataGroupFilling().withGroupName("t1").withGroupHeader("t2").withGroupFooter("t3"));
-    }
-  }
+
 
   @Test
   public void testContactAdd() {
@@ -66,10 +58,7 @@ public class ContactTestCreationDb extends TestBase {
             .inGroup(groups.iterator().next());
     Groups before = app.db().groups();
     app.goTo().ContactPage();
-    app.contact().initNewContactCreation();
-    app.contact().fill(newContact, true);
-    app.contact().submitNewContactCreation();
-    app.contact().goToHomePage();
+    app.contact().create(newContact);
     Groups after = app.db().groups();
     assertThat(after, equalTo(before));
 
