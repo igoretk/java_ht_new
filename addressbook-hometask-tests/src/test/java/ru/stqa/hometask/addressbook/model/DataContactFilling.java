@@ -58,7 +58,7 @@ public class DataContactFilling {
   private String names;
 
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "address_in_groups",
           joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
   private Set<DataGroupFilling> groups = new HashSet<>();
@@ -229,4 +229,8 @@ public class DataContactFilling {
   }
 
 
+  public DataContactFilling inGroup(DataGroupFilling group) {
+    groups.add(group);
+    return this;
+  }
 }

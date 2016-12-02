@@ -3,6 +3,8 @@ package ru.stqa.hometask.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.hometask.addressbook.model.Contacts;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
 
@@ -10,6 +12,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class ContactHelper extends HelperBase {
@@ -23,7 +28,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath(".//*[@id='content']//input[@value='Enter']"));
   }
 
-  public void fill(DataContactFilling dataContactFilling) {
+  public void fill(DataContactFilling dataContactFilling, boolean creation) {
 
     type(By.name("firstname"), dataContactFilling.getFirstName()); //primary info filling
     type(By.name("lastname"), dataContactFilling.getLastName());
@@ -35,6 +40,16 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), dataContactFilling.getEmail2());
     type(By.name("email3"), dataContactFilling.getEmail3());
     //attach(By.name("photo"), dataContactFilling.getPhoto());
+
+    if (creation) {
+      if (dataContactFilling.getGroups().size() > 0) {
+        assertTrue(dataContactFilling.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(dataContactFilling.getGroups().iterator().next().getGroupName());
+      }
+      else {
+        Assert.assertFalse(isElementPresent(By.name("new_group")));
+      }
+    }
 
   }
 
@@ -65,7 +80,7 @@ public class ContactHelper extends HelperBase {
 
   public void create(DataContactFilling contact) {
     initNewContactCreation();
-    fill(contact);
+    fill(contact, true);
     submitNewContactCreation();
     goToHomePage();
   }
@@ -73,7 +88,7 @@ public class ContactHelper extends HelperBase {
   public void modify(int index, DataContactFilling contact) {
     select(index);
     clickToEdit();
-    fill(contact);
+    fill(contact, true);
     submit();
     goToHomePage();
   }
@@ -81,7 +96,7 @@ public class ContactHelper extends HelperBase {
   public void modify(DataContactFilling contact) {
     selectContactById(contact.getId());
     clickToEdit();
-    fill(contact);
+    fill(contact, true);
     submit();
     goToHomePage();
   }

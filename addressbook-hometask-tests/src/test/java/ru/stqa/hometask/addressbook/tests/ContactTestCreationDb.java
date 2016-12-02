@@ -2,10 +2,13 @@ package ru.stqa.hometask.addressbook.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.hometask.addressbook.model.Contacts;
 import ru.stqa.hometask.addressbook.model.DataContactFilling;
+import ru.stqa.hometask.addressbook.model.DataGroupFilling;
+import ru.stqa.hometask.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -43,6 +46,32 @@ public class ContactTestCreationDb extends TestBase {
 
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+
+  }
+
+  @BeforeMethod
+  public void ensurePreconditions() {
+    if (app.db().contacts().size() == 0 || app.group().list().size() == 0) {
+      app.goTo().ContactPage();
+      app.contact().create(new DataContactFilling().withFirstName("FirstName").withLastName("LastName"));
+      app.goTo().GroupPage();
+      app.group().create(new DataGroupFilling().withGroupName("t1").withGroupHeader("t2").withGroupFooter("t3"));
+    }
+  }
+
+  @Test
+  public void testContactAdd() {
+    Groups groups = app.db().groups();
+    DataContactFilling newContact = new DataContactFilling().withFirstName("test_name").withLastName("test_surname")
+            .inGroup(groups.iterator().next());
+    Groups before = app.db().groups();
+    app.goTo().ContactPage();
+    app.contact().initNewContactCreation();
+    app.contact().fill(newContact, true);
+    app.contact().submitNewContactCreation();
+    app.contact().goToHomePage();
+    Groups after = app.db().groups();
+    assertThat(after, equalTo(before));
 
   }
 }
