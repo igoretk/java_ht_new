@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.jboss.netty.util.internal.SystemPropertyUtil.contains;
-
 public class HttpSession {
   private CloseableHttpClient httpClient;
   private ApplicationManager app;
@@ -36,7 +34,7 @@ public class HttpSession {
     post.setEntity(new UrlEncodedFormEntity(params));
     CloseableHttpResponse response = httpClient.execute(post);
     String body = getTextFrom(response);
-    return body.contains(String.format("<span class=\"italic\">%s</span>", username));
+    return body.contains(String.format("<span id=\"logged-in-user\">%s</span>", username));
   }
 
   private String getTextFrom(CloseableHttpResponse response) throws IOException {
@@ -51,7 +49,7 @@ public class HttpSession {
     HttpGet get = new HttpGet(app.getProperty("web.baseUrl") + "/index.php");
     CloseableHttpResponse response = httpClient.execute(get);
     String body = getTextFrom(response);
-    return body.contains(String.format("<span class=\"italic\">%s</span>", username));
+    return body.contains(String.format("<span id=\"logged-in-user\">%s</span>", username));
   }
 
 }
