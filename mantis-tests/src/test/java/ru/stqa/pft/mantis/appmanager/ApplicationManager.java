@@ -14,57 +14,65 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    private WebDriver wd;
-    private final Properties properties;
+  private WebDriver wd;
+  private final Properties properties;
 
-    private String browser;
-    private RegistrationHelper registratinHelper;
+  private String browser;
+  private RegistrationHelper registratinHelper;
+  private FtpHelper ftp;
 
-    public ApplicationManager(String browser) {
-        this.browser = browser;
-        properties = new Properties();
+  public ApplicationManager(String browser) {
+    this.browser = browser;
+    properties = new Properties();
+  }
+
+
+  public void init() throws IOException {
+    String target = System.getProperty("target", "local");
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+  }
+
+  public HttpSession newSession() {
+    return new HttpSession(this);
+  }
+
+  public void stop() {
+    if (wd != null) {
+      wd.quit();
     }
+  }
 
+  public String getProperty(String key) {
+    return properties.getProperty(key);
+  }
 
-    public void init() throws IOException {
-        String target = System.getProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
+  public RegistrationHelper registration() {
+    if (registratinHelper == null) {
+      registratinHelper = new RegistrationHelper(this);
     }
+    return registratinHelper;
+  }
 
-    public HttpSession newSession() {
-        return new HttpSession(this);
+  public FtpHelper ftp() {
+    if (ftp == null) {
+      ftp = new FtpHelper(this);
     }
+    return ftp;
+  }
 
-    public void stop() {
-        if (wd != null) {
-            wd.quit();
-        }
+  public WebDriver getDriver() {
+    if (wd == null) {
+      if (Objects.equals(browser, BrowserType.FIREFOX)) {
+        wd = new FirefoxDriver();
+      } else if (Objects.equals(browser, BrowserType.CHROME)) {
+        wd = new ChromeDriver();
+      } else if (Objects.equals(browser, BrowserType.IE)) {
+        wd = new InternetExplorerDriver();
+      }
+      wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+      wd.get(properties.getProperty("web.baseUrl"));
     }
-
-    public String getProperty(String key) {
-        return properties.getProperty(key);
-    }
-
-    public RegistrationHelper registration() {
-        if (registratinHelper == null) {
-            registratinHelper = new RegistrationHelper(this);
-        }
-        return registratinHelper;
-    }
-
-    public WebDriver getDriver() {
-        if (wd == null) {
-            if (Objects.equals(browser, BrowserType.FIREFOX)) {
-                wd = new FirefoxDriver();
-            } else if (Objects.equals(browser, BrowserType.CHROME)) {
-                wd = new ChromeDriver();
-            } else if (Objects.equals(browser, BrowserType.IE)) {
-                wd = new InternetExplorerDriver();
-            }
-            wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-            wd.get(properties.getProperty("web.baseUrl"));
-        }
-        return wd;
-    }
+    return wd;
+  }
 }
