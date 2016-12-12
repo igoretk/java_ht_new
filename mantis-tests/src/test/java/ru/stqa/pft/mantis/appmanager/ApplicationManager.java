@@ -22,6 +22,8 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
 
+  //
+
   public ApplicationManager(String browser) {
     this.browser = browser;
     properties = new Properties();
@@ -31,6 +33,9 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+    //
+
 
   }
 
@@ -43,6 +48,10 @@ public class ApplicationManager {
       wd.quit();
     }
   }
+
+  //
+
+
 
   public String getProperty(String key) {
     return properties.getProperty(key);
