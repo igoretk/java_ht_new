@@ -18,12 +18,12 @@ import static org.testng.Assert.assertTrue;
  */
 public class RegistrationTests extends TestBase {
 
-//  @BeforeMethod
+  //  @BeforeMethod
   public void startMailServer() {
     app.mail().start();
   }
 
-  @Test
+  @Test(enabled = false)
   public void testRegistration() throws IOException, MessagingException {
     long now = System.currentTimeMillis();
     String user = String.format("user%s", now);
@@ -38,7 +38,7 @@ public class RegistrationTests extends TestBase {
 
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.registration().finish(confirmationLink, password);
-    assertTrue (app.newSession().login(user, password));
+    assertTrue(app.newSession().login(user, password));
 
   }
 
@@ -49,60 +49,65 @@ public class RegistrationTests extends TestBase {
   }
 
 
-
- // @AfterMethod(alwaysRun = true)
+  // @AfterMethod(alwaysRun = true)
   public void stopMailServer() {
     app.mail().stop();
   }
 
   @Test
-  public void testResetPsw() throws IOException, MessagingException {
+  public void testResetPsw() throws IOException, MessagingException, SQLException {
 
-    HashSet<Users> mantisUsers = new HashSet<>();
-    Connection conn;
-    String password = "changedPsswd";
+    String strForConnection = "jdbc:mysql://localhost:3306/bugtracker?serverTimezone=UTC&user=root&password=";
+    HashSet<Users> bugTrackerUsers = new HashSet<>();
+    Connection connection;
+    String password = "changedPSW";
 
-    try {
-      conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugtracker?serverTimezone=UTC&user=root&password=");
 
-      Statement st = conn.createStatement();
-      ResultSet rs = st.executeQuery("select id, username, email from mantis_user_table");
-      while (rs.next()) {
-        if (!"administrator".equals(rs.getString("username"))) {
-          mantisUsers.add(new Users(rs.getInt("id"), rs.getString("username"), rs.getString("email")));
-        }
-      }
-      if (mantisUsers.size() == 0) {
-        testRegistration();
-        rs = st.executeQuery("select id, username, email from mantis_user_table");
-        while (rs.next()) {
-          if (!"administrator".equals(rs.getString("username"))) {
-            mantisUsers.add(new Users(rs.getInt("id"), rs.getString("username"), rs.getString("email")));
-          }
-        }
-      }
+    connection = DriverManager.getConnection(strForConnection);
 
-      app.mail().start();
-      app.registration().login("administrator", "root");
-      app.goTo().settingsPage();
-      app.goTo().settingsUser();
-      Users changedUser = mantisUsers.iterator().next();
-      app.registration().resetPsw(changedUser.getUserName());
-      List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
-      String confirmLink = findConfirmationLink(mailMessages, changedUser.getEmail());
-      app.registration().logout();
-      app.registration().finish(confirmLink, password);
-      assertTrue(app.newSession().login(changedUser.getUserName(), password));
-      app.mail().stop();
-      rs.close();
-      st.close();
-      conn.close();
+    Statement statement = connection.createStatement();
+    ResultSet resultSet = statement.executeQuery("select id, username, email from mantis_user_table");
+    resultSet = getResultSetChecking(bugTrackerUsers, statement, resultSet);
 
-    } catch (SQLException ex) {
-      System.out.println("SQLException: " + ex.getMessage());
-      System.out.println("SQLState: " + ex.getSQLState());
-      System.out.println("VendorError: " + ex.getErrorCode());
-    }
+    app.mail().start();
+    app.registration().login("administrator", "root");
+    app.goTo().settingsPage();
+    app.goTo().settingsUser();
+    Users changedUser = bugTrackerUsers.iterator().next();
+    app.registration().resetPsw(changedUser.getUserName());
+    List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
+    String confirmLink = findConfirmationLink(mailMessages, changedUser.getEmail());
+    app.registration().logout();
+    app.registration().finish(confirmLink, password);
+    assertTrue(app.newSession().login(changedUser.getUserName(), password));
+    app.mail().stop();
+    stopConnectionActivity(connection, statement, resultSet);
+
   }
+
+  private ResultSet getResultSetChecking(HashSet<Users> bugTrackerUsers, Statement statement, ResultSet resultSet) throws SQLException, IOException, MessagingException {
+    while (resultSet.next()) {
+      if (!"administrator".equals(resultSet.getString("username"))) {
+        bugTrackerUsers.add(new Users(resultSet.getInt("id"), resultSet.getString("username"), resultSet.getString("email")));
+      }
+    }
+    if (bugTrackerUsers.size() == 0) {
+      testRegistration();
+      resultSet = statement.executeQuery("select id, username, email from mantis_user_table");
+      while (resultSet.next()) {
+        if (!"administrator".equals(resultSet.getString("username"))) {
+          bugTrackerUsers.add(new Users(resultSet.getInt("id"), resultSet.getString("username"), resultSet.getString("email")));
+        }
+      }
+    }
+    return resultSet;
+  }
+
+  private void stopConnectionActivity(Connection connection, Statement statement, ResultSet resultSet) throws SQLException {
+    resultSet.close();
+    statement.close();
+    connection.close();
+  }
+
 
 }
