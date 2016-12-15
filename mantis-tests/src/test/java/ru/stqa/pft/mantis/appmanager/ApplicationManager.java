@@ -23,6 +23,7 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
   private NavHelper navHelper;
+  private SoapHelper soapHelper;
 
   //
 
@@ -106,5 +107,11 @@ public class ApplicationManager {
       navHelper = new NavHelper(this);
     }
     return navHelper;
+  }
+  public SoapHelper soap() {
+    if (soapHelper == null) {
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
   }
 }
