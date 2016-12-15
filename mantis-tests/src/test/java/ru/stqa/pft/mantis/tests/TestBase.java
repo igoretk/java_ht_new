@@ -45,8 +45,8 @@ public class TestBase {
     String status = "resolved";
     MantisConnectPortType mc = getMantisConnect();
     IssueData issue = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
-    System.out.println(issue.getStatus());
-    if (issue.getStatus().toString().equals(status)) {
+    System.out.println(issue.getStatus().getName());
+    if (issue.getStatus().getName().toString().equals(status)) {
       return false;
     } else {
       return true;
