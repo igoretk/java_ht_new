@@ -32,4 +32,9 @@ public class SoapTests extends TestBase {
     assertEquals(issue.getSummary(), created.getSummary());
   }
 
+  @Test
+  public void testCheckStatus () throws RemoteException, ServiceException, MalformedURLException {
+    skipIfNotFixed(0000002);
+  }
+
 }
